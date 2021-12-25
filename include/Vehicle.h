@@ -23,6 +23,12 @@ protected:
     std::string *apUsage;
 public:
     Vehicle();
+    Vehicle(std::string name,
+            std::string type,
+            int productionYear,
+            engineProperties engine,
+            equipmentOptions equipment,
+            std::string *pUsage);
     ~Vehicle();
     std::string getName() const;
     std::string getType() const;
