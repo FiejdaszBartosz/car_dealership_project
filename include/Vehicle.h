@@ -27,11 +27,14 @@ class Vehicle {
   std::vector<accessories> aWheels;
   std::vector<accessories> aAdditionalEquipment;
 
-  void createEngine(int hpTemp,
-					int nmTemp,
-					std::string fuelTypeTemp,
-					int enginePriceTemp,
-					engineProperties rEngine);
+  void createEngine(const int hp,
+					const int nm,
+					const std::string fuelType,
+					const int enginePrice,
+					engineProperties &rEngine);
+  void createAccessories(const std::string accessoriesName,
+						 const int accessoriesPrice,
+						 accessories &rAccessories);
 
  public:
   Vehicle();
@@ -48,28 +51,64 @@ class Vehicle {
   std::string getType() const;
   int getProductionYear() const;
   std::vector<engineProperties> getEngine() const;
+  std::vector<accessories> getInterior() const;
+  std::vector<accessories> getColor() const;
+  std::vector<accessories> getWheels() const;
+  std::vector<accessories> getAdditionalEquipment() const;
   void setName(const std::string &rName);
   void setType(const std::string &rType);
   void setProductionYear(const int &rProductionYear);
   //engine functions section
   void setEngine(const std::vector<engineProperties> &rEngineVector);
   void setEngine(const engineProperties &rEngineStruct);
-  void addEngine(int hp,
-				 int nm,
-				 std::string fuelType,
-				 int enginePrice);
-  void removeEngine(int hp,
-					int nm,
-					std::string fuelType,
-					int enginePrice);
-  void changeEngineProperties(int hp,
-							  int nm,
-							  std::string fuelType,
-							  int enginePrice);
-  void setInterior(const accessories &rInterior);
+  void addEngine(const int hp,
+				 const int nm,
+				 const std::string fuelType,
+				 const int enginePrice);
+  void removeEngine(const int hp,
+					const int nm,
+					const std::string fuelType,
+					const int enginePrice);
+  void changeEngineProperties(const int hp,
+							  const int nm,
+							  const std::string fuelType,
+							  const int enginePrice);
+  //interior functions section
+  void setInterior(const std::vector<accessories> &rInteriorVector);
+  void setInterior(const accessories &rInteriorStruct);
+  void addInterior(const std::string accessoriesName,
+				   const int accessoriesPrice);
+  void removeInterior(const std::string accessoriesName,
+					  const int accessoriesPrice);
+  void changeInteriorProperties(const std::string accessoriesName,
+								const int accessoriesPrice);
+  //color functions section
+  void setColor(const std::vector<accessories> &rColorVector);
   void setColor(const accessories &rColor);
+  void addColor(const std::string accessoriesName,
+				const int accessoriesPrice);
+  void removeColor(const std::string accessoriesName,
+				   const int accessoriesPrice);
+  void changeColorProperties(const std::string accessoriesName,
+							 const int accessoriesPrice);
+  //wheels functions section
+  void setWheels(const std::vector<accessories> &rWheels);
   void setWheels(const accessories &rWheels);
+  void addWheels(const std::string accessoriesName,
+				 const int accessoriesPrice);
+  void removeWheels(const std::string accessoriesName,
+					const int accessoriesPrice);
+  void changeWheelsProperties(const std::string accessoriesName,
+							  const int accessoriesPrice);
+  //additional equipment functions section
+  void setAdditionalEquipment(const std::vector<accessories> &rAdditionalEquipment);
   void setAdditionalEquipment(const accessories &rAdditionalEquipment);
+  void addAdditionalEquipment(const std::string accessoriesName,
+							  const int accessoriesPrice);
+  void removeAdditionalEquipment(const std::string accessoriesName,
+								 const int accessoriesPrice);
+  void changeAdditionalEquipmentProperties(const std::string accessoriesName,
+										   const int accessoriesPrice);
 };
 
 #endif // VEHICLE_H
