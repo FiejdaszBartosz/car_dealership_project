@@ -1,5 +1,6 @@
 #include "../include/mainwindow.h"
 #include "../include/Vehicle.h"
+#include "../include/Hatchback.h"
 
 #include <QApplication>
 
@@ -16,23 +17,26 @@ int main(int argc, char *argv[])
 #endif //notTest
 
 #ifdef test
-    engineProperties newEngine;
-    newEngine.hp = 100;
-    newEngine.nm = 200;
-    newEngine.fuelType = "petrol";
+    std::vector <engineProperties> newEngine;
+    std::vector <accessories> newInterior;
+    std::vector <accessories> newColor;
+    std::vector <accessories> newWheels;
+    std::vector <accessories> newAdditionalEquipment;
 
-    equipmentOptions newEquipment;
-    newEquipment.interior = "wood";
+    Hatchback newVehicle("mercedes",
+                         "Combi",
+                         2020,
+                         newEngine,
+                         newInterior,
+                         newColor,
+                         newWheels,
+                         newAdditionalEquipment);
 
-    std::string newUsage[2] = {"city", "long"};
+    std::cout << newVehicle.getType() << std::endl << std::endl;
+    std::cout << newVehicle.getName() << std::endl <<
+                 newVehicle.getType() << std::endl <<
+                 newVehicle.getProductionYear() << std::endl;
 
-    Vehicle newVehicle("mercedes",
-                       "Combi",
-                       2020,
-                       newEngine,
-                       newEquipment,
-                       newUsage);
-    std::cout << "test";
     return 0;
 #endif //test
 }
