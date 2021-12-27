@@ -1,24 +1,24 @@
-#include "Hatchback.h"
+#include "../include/Hatchback.h"
 
-Hatchback::Hatchback()
-{
-
+Hatchback::Hatchback() {
+  aName = "Not set";
+  aType = "Hatchback";
+  aProductionYear = 0;
 }
 
 Hatchback::Hatchback(std::string name,
-                 std::string type,
-                 int productionYear,
-                 std::vector <engineProperties> engine,
-                 std::vector <accessories> interior,
-                 std::vector <accessories> color,
-                 std::vector <accessories> wheels,
-                 std::vector <accessories> additionalEquipment){
-aName = name;
-aType = type;
-aProductionYear = productionYear;
-aEngine = engine;
-aInterior = interior;
-aColor = color;
-aWheels = wheels;
-aAdditionalEquipment = additionalEquipment;
+					 int productionYear,
+					 std::vector<engineProperties> &rEngine,
+					 std::vector<accessories> &rInterior,
+					 std::vector<accessories> &rColor,
+					 std::vector<accessories> &rWheels,
+					 std::vector<accessories> &rAdditionalEquipment) {
+  aName = name;
+  aType = "Hatchback";
+  aProductionYear = productionYear;
+  aEngine = rEngine;
+  aInterior = rInterior;
+  aColor = rColor;
+  aWheels = rWheels;
+  aAdditionalEquipment = rAdditionalEquipment;
 }

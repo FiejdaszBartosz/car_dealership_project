@@ -3,18 +3,16 @@
 
 #include <Vehicle.h>
 
-class Hatchback : public Vehicle
-{
-public:
-    Hatchback();
-    Hatchback(std::string name,
-              std::string type,
-              int productionYear,
-              std::vector <engineProperties> engine,
-              std::vector <accessories> interior,
-              std::vector <accessories> color,
-              std::vector <accessories> wheels,
-              std::vector <accessories> additionalEquipment);
+class Hatchback : public Vehicle {
+ public:
+  Hatchback();
+  Hatchback(std::string name,
+			int productionYear,
+			std::vector<engineProperties> &rEngine,
+			std::vector<accessories> &rInterior,
+			std::vector<accessories> &rColor,
+			std::vector<accessories> &rWheels,
+			std::vector<accessories> &rAdditionalEquipment);
 };
 
 #endif // HATCHBACK_H
