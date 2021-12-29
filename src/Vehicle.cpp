@@ -28,12 +28,14 @@ void Vehicle::createAccessories(const std::string &rAccessoriesName,
 Vehicle::Vehicle() :
 	aName("Not set"),
 	aType("Not set"),
-	aProductionYear(0) {}
+    aProductionYear(0),
+    aVehicleLength(0){}
 
 //setting by declared value
 Vehicle::Vehicle(std::string &rName,
 				 std::string &rType,
 				 int &rProductionYear,
+                 int &rVehicleLength,
 				 std::vector<engineProperties> &rEngine,
 				 std::vector<accessories> &rInterior,
 				 std::vector<accessories> &rColor,
@@ -42,6 +44,7 @@ Vehicle::Vehicle(std::string &rName,
 	aName(rName),
 	aType(rType),
 	aProductionYear(rProductionYear),
+    aVehicleLength(rVehicleLength),
 	aEngine(rEngine),
 	aInterior(rInterior),
 	aColor(rColor),
@@ -58,6 +61,10 @@ std::string Vehicle::getType() const {
 
 int Vehicle::getProductionYear() const {
   return aProductionYear;
+}
+
+int Vehicle::getVehicleLength() const {
+  return aVehicleLength;
 }
 
 std::vector<engineProperties> Vehicle::getEngine() const {
@@ -90,6 +97,16 @@ void Vehicle::setType(const std::string &rType) {
 
 void Vehicle::setProductionYear(const int &rProductionYear) {
   this->aProductionYear = rProductionYear;
+}
+
+void Vehicle::setVehicleLength(const int &rVehicleLength) {
+  this->aVehicleLength = rVehicleLength;
+}
+
+void Vehicle::addVehicleLength(const int &rAdditionaLenght) {
+    int temp = getVehicleLength();
+    temp += rAdditionaLenght;
+    setVehicleLength(temp);
 }
 
 //engine functions section

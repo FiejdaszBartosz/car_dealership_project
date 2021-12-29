@@ -31,10 +31,13 @@ int main(int argc, char *argv[]) {
 
   newHatchback.setName("A class");
   newHatchback.setProductionYear(2020);
+  newHatchback.setVehicleLength(2100);
+
 
   std::cout << newHatchback.getName() << std::endl <<
 			newHatchback.getType() << std::endl <<
-			newHatchback.getProductionYear() << std::endl;
+            newHatchback.getProductionYear() << std::endl <<
+            newHatchback.getVehicleLength() << std::endl;
 
   return 0;
 #endif //test
