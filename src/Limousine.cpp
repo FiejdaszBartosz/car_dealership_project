@@ -29,7 +29,7 @@ Limousine::Limousine(std::string &rName,
     aIsLong = false;
 }
 
-Limousine::addLongVersion(){
+void Limousine::addLongVersion(){
     aIsLong = true;
     setType("long limousine");
     addVehicleLength(20);
