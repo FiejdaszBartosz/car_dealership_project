@@ -6,7 +6,7 @@
 class Hatchback : public Vehicle {
  public:
   Hatchback();
-  Hatchback(std::string name,
+  Hatchback(std::string& rName,
 			int productionYear,
 			std::vector<engineProperties> &rEngine,
 			std::vector<accessories> &rInterior,

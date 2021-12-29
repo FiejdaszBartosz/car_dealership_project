@@ -6,14 +6,14 @@ Hatchback::Hatchback() {
   aProductionYear = 0;
 }
 
-Hatchback::Hatchback(std::string name,
+Hatchback::Hatchback(std::string& rName,
 					 int productionYear,
 					 std::vector<engineProperties> &rEngine,
 					 std::vector<accessories> &rInterior,
 					 std::vector<accessories> &rColor,
 					 std::vector<accessories> &rWheels,
 					 std::vector<accessories> &rAdditionalEquipment) {
-  aName = name;
+  aName = rName;
   aType = "Hatchback";
   aProductionYear = productionYear;
   aEngine = rEngine;

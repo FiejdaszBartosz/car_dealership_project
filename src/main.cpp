@@ -22,18 +22,19 @@ int main(int argc, char *argv[]) {
   std::vector<accessories> newWheels;
   std::vector<accessories> newAdditionalEquipment;
 
-  Hatchback newVehicle("mercedes",
-					   2021,
-					   newEngine,
-					   newInterior,
-					   newColor,
-					   newWheels,
-					   newAdditionalEquipment);
+  Hatchback newHatchback;
+  newHatchback.addEngine(300, 500, "petrol", 15000);
+  newHatchback.addInterior("brown leather", 15000);
+  newHatchback.addColor("black metallic", 3000);
+  newHatchback.addWheels("18", 5000);
+  newHatchback.addColor("panoramic roof", 5000);
 
-  std::cout << newVehicle.getType() << std::endl << std::endl;
-  std::cout << newVehicle.getName() << std::endl <<
-			newVehicle.getType() << std::endl <<
-			newVehicle.getProductionYear() << std::endl;
+  newHatchback.setName("A class");
+  newHatchback.setProductionYear(2020);
+
+  std::cout << newHatchback.getName() << std::endl <<
+  newHatchback.getType() << std::endl <<
+  newHatchback.getProductionYear() << std::endl;
 
   return 0;
 #endif //test

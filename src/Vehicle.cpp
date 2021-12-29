@@ -104,7 +104,7 @@ void Vehicle::setEngine(const engineProperties &rEngineStruct) {
 //adds new enging at the end of the aEngine
 void Vehicle::addEngine(const int hp,
 						const int nm,
-						const std::string fuelType,
+                        const std::string fuelType,
 						const int enginePrice) {
   engineProperties temp;
   createEngine(hp, nm, fuelType, enginePrice, temp);

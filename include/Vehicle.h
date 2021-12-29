@@ -63,7 +63,7 @@ class Vehicle {
   void setEngine(const engineProperties &rEngineStruct);
   void addEngine(const int hp,
 				 const int nm,
-				 const std::string fuelType,
+                 const std::string fuelType,
 				 const int enginePrice);
   void removeEngine(const int hp,
 					const int nm,
