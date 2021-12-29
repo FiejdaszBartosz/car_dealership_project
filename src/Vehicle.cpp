@@ -160,6 +160,7 @@ void Vehicle::setInterior(const accessories &rInteriorStruct) {
   this->aInterior.push_back(rInteriorStruct);
 }
 
+//Adds interior with the given values
 void Vehicle::addInterior(const std::string &rAccessoriesName,
 						  const int &rAccessoriesPrice) {
   accessories temp;
@@ -167,6 +168,7 @@ void Vehicle::addInterior(const std::string &rAccessoriesName,
   setInterior(temp);
 }
 
+//Remove interior with the given values
 void Vehicle::removeInterior(const std::string &rAccessoriesName,
 							 const int &rAccessoriesPrice) {
   auto temp = getInterior();
@@ -181,6 +183,7 @@ void Vehicle::removeInterior(const std::string &rAccessoriesName,
   setInterior(temp);
 }
 
+//Change interior with the given values
 void Vehicle::changeInteriorProperties(const std::string &rAccessoriesName,
 									   const int &rAccessoriesPrice) {
   auto temp = getInterior();
@@ -198,6 +201,9 @@ void Vehicle::changeInteriorProperties(const std::string &rAccessoriesName,
   setInterior(temp);
 }
 
+/** Functions for color, wheels and additionalEquipment are similar to
+ * interior functions.
+ */
 void Vehicle::setColor(const std::vector<accessories> &rColorVector) {
   this->aColor = rColorVector;
 }
