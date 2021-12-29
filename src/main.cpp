@@ -33,8 +33,8 @@ int main(int argc, char *argv[]) {
   newHatchback.setProductionYear(2020);
 
   std::cout << newHatchback.getName() << std::endl <<
-  newHatchback.getType() << std::endl <<
-  newHatchback.getProductionYear() << std::endl;
+			newHatchback.getType() << std::endl <<
+			newHatchback.getProductionYear() << std::endl;
 
   return 0;
 #endif //test

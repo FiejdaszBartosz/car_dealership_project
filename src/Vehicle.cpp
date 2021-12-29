@@ -1,26 +1,26 @@
 #include "../include/Vehicle.h"
 
 //creates engine struct from input and returns it by reference
-void Vehicle::createEngine(const int hp,
-						   const int nm,
-						   const std::string fuelType,
-						   const int enginePrice,
+void Vehicle::createEngine(const int &rHp,
+						   const int &rNm,
+						   const std::string &rFuelType,
+						   const int &rEnginePrice,
 						   engineProperties &rEngine) {
   engineProperties tempEngine;
-  tempEngine.hp = hp;
-  tempEngine.nm = nm;
-  tempEngine.fuelType = fuelType;
-  tempEngine.enginePrice = enginePrice;
+  tempEngine.hp = rHp;
+  tempEngine.nm = rNm;
+  tempEngine.fuelType = rFuelType;
+  tempEngine.enginePrice = rEnginePrice;
   rEngine = tempEngine;
 }
 
 //creates accessories struct from input and returns it by reference
-void Vehicle::createAccessories(const std::string accessoriesName,
-								const int accessoriesPrice,
+void Vehicle::createAccessories(const std::string &rAccessoriesName,
+								const int &rAccessoriesPrice,
 								accessories &rAccessories) {
   accessories tempAccessories;
-  tempAccessories.accessoriesName = accessoriesName;
-  tempAccessories.accessoriesPrice = accessoriesPrice;
+  tempAccessories.accessoriesName = rAccessoriesName;
+  tempAccessories.accessoriesPrice = rAccessoriesPrice;
   rAccessories = tempAccessories;
 }
 
@@ -31,22 +31,22 @@ Vehicle::Vehicle() :
 	aProductionYear(0) {}
 
 //setting by declared value
-Vehicle::Vehicle(std::string name,
-				 std::string type,
-				 int productionYear,
-				 std::vector<engineProperties> engine,
-				 std::vector<accessories> interior,
-				 std::vector<accessories> color,
-				 std::vector<accessories> wheels,
-				 std::vector<accessories> additionalEquipment) :
-	aName(name),
-	aType(type),
-	aProductionYear(productionYear),
-	aEngine(engine),
-	aInterior(interior),
-	aColor(color),
-	aWheels(wheels),
-	aAdditionalEquipment(additionalEquipment) {}
+Vehicle::Vehicle(std::string &rName,
+				 std::string &rType,
+				 int &rProductionYear,
+				 std::vector<engineProperties> &rEngine,
+				 std::vector<accessories> &rInterior,
+				 std::vector<accessories> &rColor,
+				 std::vector<accessories> &rWheels,
+				 std::vector<accessories> &rAdditionalEquipment) :
+	aName(rName),
+	aType(rType),
+	aProductionYear(rProductionYear),
+	aEngine(rEngine),
+	aInterior(rInterior),
+	aColor(rColor),
+	aWheels(rWheels),
+	aAdditionalEquipment(rAdditionalEquipment) {}
 
 std::string Vehicle::getName() const {
   return aName;
@@ -102,26 +102,26 @@ void Vehicle::setEngine(const engineProperties &rEngineStruct) {
 }
 
 //adds new enging at the end of the aEngine
-void Vehicle::addEngine(const int hp,
-						const int nm,
-                        const std::string fuelType,
-						const int enginePrice) {
+void Vehicle::addEngine(const int &rHp,
+						const int &rNm,
+						const std::string &rFuelType,
+						const int &rEnginePrice) {
   engineProperties temp;
-  createEngine(hp, nm, fuelType, enginePrice, temp);
+  createEngine(rHp, rNm, rFuelType, rEnginePrice, temp);
   setEngine(temp);
 }
 
 //removes all matching engines
-void Vehicle::removeEngine(const int hp,
-						   const int nm,
-						   const std::string fuelType,
-						   const int enginePrice) {
+void Vehicle::removeEngine(const int &rHp,
+						   const int &rNm,
+						   const std::string &rFuelType,
+						   const int &rEnginePrice) {
   auto temp = getEngine();
   for (auto i = temp.begin(); i != temp.end(); i++) {
-	if (i->hp == hp &&
-		i->nm == nm &&
-		i->fuelType == fuelType &&
-		i->enginePrice == enginePrice) {
+	if (i->hp == rHp &&
+		i->nm == rNm &&
+		i->fuelType == rFuelType &&
+		i->enginePrice == rEnginePrice) {
 	  i = temp.erase(i);
 	} else {
 	  ++i;
@@ -131,23 +131,23 @@ void Vehicle::removeEngine(const int hp,
 }
 
 //modifies the engine with the given values
-void Vehicle::changeEngineProperties(const int hp,
-									 const int nm,
-									 const std::string fuelType,
-									 const int enginePrice) {
+void Vehicle::changeEngineProperties(const int &rHp,
+									 const int &rNm,
+									 const std::string &rFuelType,
+									 const int &rEnginePrice) {
   auto temp = getEngine();
   for (auto i = temp.begin(); i != temp.end(); i++) {
-	if (i->hp == hp &&
-		i->nm == nm &&
-		i->fuelType == fuelType &&
-		i->enginePrice == enginePrice) {
+	if (i->hp == rHp &&
+		i->nm == rNm &&
+		i->fuelType == rFuelType &&
+		i->enginePrice == rEnginePrice) {
 	  i = temp.erase(i);
 	} else {
 	  ++i;
 	}
   }
   engineProperties tempEngine;
-  createEngine(hp, nm, fuelType, enginePrice, tempEngine);
+  createEngine(rHp, rNm, rFuelType, rEnginePrice, tempEngine);
   temp.push_back(tempEngine);
   setEngine(temp);
 }
@@ -160,19 +160,19 @@ void Vehicle::setInterior(const accessories &rInteriorStruct) {
   this->aInterior.push_back(rInteriorStruct);
 }
 
-void Vehicle::addInterior(const std::string accessoriesName,
-						  const int accessoriesPrice) {
+void Vehicle::addInterior(const std::string &rAccessoriesName,
+						  const int &rAccessoriesPrice) {
   accessories temp;
-  createAccessories(accessoriesName, accessoriesPrice, temp);
+  createAccessories(rAccessoriesName, rAccessoriesPrice, temp);
   setInterior(temp);
 }
 
-void Vehicle::removeInterior(const std::string accessoriesName,
-							 const int accessoriesPrice) {
+void Vehicle::removeInterior(const std::string &rAccessoriesName,
+							 const int &rAccessoriesPrice) {
   auto temp = getInterior();
   for (auto i = temp.begin(); i != temp.end(); i++) {
-	if (i->accessoriesName == accessoriesName &&
-		i->accessoriesPrice == accessoriesPrice) {
+	if (i->accessoriesName == rAccessoriesName &&
+		i->accessoriesPrice == rAccessoriesPrice) {
 	  i = temp.erase(i);
 	} else {
 	  ++i;
@@ -181,19 +181,19 @@ void Vehicle::removeInterior(const std::string accessoriesName,
   setInterior(temp);
 }
 
-void Vehicle::changeInteriorProperties(const std::string accessoriesName,
-									   const int accessoriesPrice) {
+void Vehicle::changeInteriorProperties(const std::string &rAccessoriesName,
+									   const int &rAccessoriesPrice) {
   auto temp = getInterior();
   for (auto i = temp.begin(); i != temp.end(); i++) {
-	if (i->accessoriesName == accessoriesName &&
-		i->accessoriesPrice == accessoriesPrice) {
+	if (i->accessoriesName == rAccessoriesName &&
+		i->accessoriesPrice == rAccessoriesPrice) {
 	  i = temp.erase(i);
 	} else {
 	  ++i;
 	}
   }
   accessories tempAccessories;
-  createAccessories(accessoriesName, accessoriesPrice, tempAccessories);
+  createAccessories(rAccessoriesName, rAccessoriesPrice, tempAccessories);
   temp.push_back(tempAccessories);
   setInterior(temp);
 }
@@ -206,19 +206,19 @@ void Vehicle::setColor(const accessories &rColorStruct) {
   this->aColor.push_back(rColorStruct);
 }
 
-void Vehicle::addColor(const std::string accessoriesName,
-					   const int accessoriesPrice) {
+void Vehicle::addColor(const std::string &rAccessoriesName,
+					   const int &rAccessoriesPrice) {
   accessories temp;
-  createAccessories(accessoriesName, accessoriesPrice, temp);
+  createAccessories(rAccessoriesName, rAccessoriesPrice, temp);
   setColor(temp);
 }
 
-void Vehicle::removeColor(const std::string accessoriesName,
-						  const int accessoriesPrice) {
+void Vehicle::removeColor(const std::string &rAccessoriesName,
+						  const int &rAccessoriesPrice) {
   auto temp = getColor();
   for (auto i = temp.begin(); i != temp.end(); i++) {
-	if (i->accessoriesName == accessoriesName &&
-		i->accessoriesPrice == accessoriesPrice) {
+	if (i->accessoriesName == rAccessoriesName &&
+		i->accessoriesPrice == rAccessoriesPrice) {
 	  i = temp.erase(i);
 	} else {
 	  ++i;
@@ -227,19 +227,19 @@ void Vehicle::removeColor(const std::string accessoriesName,
   setColor(temp);
 }
 
-void Vehicle::changeColorProperties(const std::string accessoriesName,
-									const int accessoriesPrice) {
+void Vehicle::changeColorProperties(const std::string &rAccessoriesName,
+									const int &rAccessoriesPrice) {
   auto temp = getColor();
   for (auto i = temp.begin(); i != temp.end(); i++) {
-	if (i->accessoriesName == accessoriesName &&
-		i->accessoriesPrice == accessoriesPrice) {
+	if (i->accessoriesName == rAccessoriesName &&
+		i->accessoriesPrice == rAccessoriesPrice) {
 	  i = temp.erase(i);
 	} else {
 	  ++i;
 	}
   }
   accessories tempAccessories;
-  createAccessories(accessoriesName, accessoriesPrice, tempAccessories);
+  createAccessories(rAccessoriesName, rAccessoriesPrice, tempAccessories);
   temp.push_back(tempAccessories);
   setColor(temp);
 }
@@ -252,19 +252,19 @@ void Vehicle::setWheels(const accessories &rWheelsStruct) {
   this->aWheels.push_back(rWheelsStruct);
 }
 
-void Vehicle::addWheels(const std::string accessoriesName,
-						const int accessoriesPrice) {
+void Vehicle::addWheels(const std::string &rAccessoriesName,
+						const int &rAccessoriesPrice) {
   accessories temp;
-  createAccessories(accessoriesName, accessoriesPrice, temp);
+  createAccessories(rAccessoriesName, rAccessoriesPrice, temp);
   setWheels(temp);
 }
 
-void Vehicle::removeWheels(const std::string accessoriesName,
-						   const int accessoriesPrice) {
+void Vehicle::removeWheels(const std::string &rAccessoriesName,
+						   const int &rAccessoriesPrice) {
   auto temp = getWheels();
   for (auto i = temp.begin(); i != temp.end(); i++) {
-	if (i->accessoriesName == accessoriesName &&
-		i->accessoriesPrice == accessoriesPrice) {
+	if (i->accessoriesName == rAccessoriesName &&
+		i->accessoriesPrice == rAccessoriesPrice) {
 	  i = temp.erase(i);
 	} else {
 	  ++i;
@@ -273,19 +273,19 @@ void Vehicle::removeWheels(const std::string accessoriesName,
   setWheels(temp);
 }
 
-void Vehicle::changeWheelsProperties(const std::string accessoriesName,
-									 const int accessoriesPrice) {
+void Vehicle::changeWheelsProperties(const std::string &rAccessoriesName,
+									 const int &rAccessoriesPrice) {
   auto temp = getWheels();
   for (auto i = temp.begin(); i != temp.end(); i++) {
-	if (i->accessoriesName == accessoriesName &&
-		i->accessoriesPrice == accessoriesPrice) {
+	if (i->accessoriesName == rAccessoriesName &&
+		i->accessoriesPrice == rAccessoriesPrice) {
 	  i = temp.erase(i);
 	} else {
 	  ++i;
 	}
   }
   accessories tempAccessories;
-  createAccessories(accessoriesName, accessoriesPrice, tempAccessories);
+  createAccessories(rAccessoriesName, rAccessoriesPrice, tempAccessories);
   temp.push_back(tempAccessories);
   setWheels(temp);
 }
@@ -298,19 +298,19 @@ void Vehicle::setAdditionalEquipment(const accessories &rAdditionalEquipmentStru
   this->aAdditionalEquipment.push_back(rAdditionalEquipmentStruct);
 }
 
-void Vehicle::addAdditionalEquipment(const std::string accessoriesName,
-									 const int accessoriesPrice) {
+void Vehicle::addAdditionalEquipment(const std::string &rAccessoriesName,
+									 const int &rAccessoriesPrice) {
   accessories temp;
-  createAccessories(accessoriesName, accessoriesPrice, temp);
+  createAccessories(rAccessoriesName, rAccessoriesPrice, temp);
   setAdditionalEquipment(temp);
 }
 
-void Vehicle::removeAdditionalEquipment(const std::string accessoriesName,
-										const int accessoriesPrice) {
+void Vehicle::removeAdditionalEquipment(const std::string &rAccessoriesName,
+										const int &rAccessoriesPrice) {
   auto temp = getAdditionalEquipment();
   for (auto i = temp.begin(); i != temp.end(); i++) {
-	if (i->accessoriesName == accessoriesName &&
-		i->accessoriesPrice == accessoriesPrice) {
+	if (i->accessoriesName == rAccessoriesName &&
+		i->accessoriesPrice == rAccessoriesPrice) {
 	  i = temp.erase(i);
 	} else {
 	  ++i;
@@ -319,19 +319,19 @@ void Vehicle::removeAdditionalEquipment(const std::string accessoriesName,
   setAdditionalEquipment(temp);
 }
 
-void Vehicle::changeAdditionalEquipmentProperties(const std::string accessoriesName,
-												  const int accessoriesPrice) {
+void Vehicle::changeAdditionalEquipmentProperties(const std::string &rAccessoriesName,
+												  const int &rAccessoriesPrice) {
   auto temp = getWheels();
   for (auto i = temp.begin(); i != temp.end(); i++) {
-	if (i->accessoriesName == accessoriesName &&
-		i->accessoriesPrice == accessoriesPrice) {
+	if (i->accessoriesName == rAccessoriesName &&
+		i->accessoriesPrice == rAccessoriesPrice) {
 	  i = temp.erase(i);
 	} else {
 	  ++i;
 	}
   }
   accessories tempAccessories;
-  createAccessories(accessoriesName, accessoriesPrice, tempAccessories);
+  createAccessories(rAccessoriesName, rAccessoriesPrice, tempAccessories);
   temp.push_back(tempAccessories);
   setAdditionalEquipment(temp);
 }
