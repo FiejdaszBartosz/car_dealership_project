@@ -1,7 +1,9 @@
 #include "../include/mainwindow.h"
 #include "../include/Vehicle.h"
 #include "../include/Hatchback.h"
+#include "../include/Limousine.h"
 #include "../include/SportVehicle.h"
+#include "../include/VehicleManager.h"
 
 #include <QApplication>
 
@@ -38,21 +40,27 @@ int main(int argc, char *argv[]) {
             newHatchback.getProductionYear() << std::endl <<
             newHatchback.getVehicleLength() << std::endl;
 
-  SportVehicle newSport;
-  newSport.addEngine(300, 500, "petrol", 15000);
-  newSport.addInterior("brown leather", 15000);
-  newSport.addColor("black metallic", 3000);
-  newSport.addWheels("18", 5000);
-  newSport.addColor("panoramic roof", 5000);
-  newSport.setName("G class");
-  newSport.setProductionYear(2020);
-  newSport.setVehicleLength(2100);
-  newSport.addEnginePackage(100, 50, "petrol", 5000);
-  newSport.upgradeEngine(0);
+  SportVehicle *newSport = new SportVehicle;
+  newSport->addEngine(300, 500, "petrol", 15000);
+  newSport->addInterior("brown leather", 15000);
+  newSport->addColor("black metallic", 3000);
+  newSport->addWheels("18", 5000);
+  newSport->addColor("panoramic roof", 5000);
+  newSport->setName("G class");
+  newSport->setProductionYear(2020);
+  newSport->setVehicleLength(2100);
+  newSport->addEnginePackage(100, 50, "petrol", 5000);
+  newSport->upgradeEngine(0);
 
-  std::cout << newSport.getName() << std::endl <<
-               newSport.getEngine().at(0).hp << std::endl <<
-               newSport.getEngine().at(0).nm << std::endl;
+  std::cout << newSport->getName() << std::endl <<
+               newSport->getEngine().at(0).hp << std::endl <<
+               newSport->getEngine().at(0).nm << std::endl;
+
+  SportVehicle *newSport1 = new SportVehicle;
+  VehicleManager newMenager;
+  newMenager.addElemnt(newSport);
+  delete newSport;
+  delete newSport1;
   return 0;
 #endif //test
 }
