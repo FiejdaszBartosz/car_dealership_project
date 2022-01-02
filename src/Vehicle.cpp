@@ -51,6 +51,8 @@ Vehicle::Vehicle(std::string &rName,
 	aWheels(rWheels),
 	aAdditionalEquipment(rAdditionalEquipment) {}
 
+Vehicle::~Vehicle() {}
+
 std::string Vehicle::getName() const {
   return aName;
 }

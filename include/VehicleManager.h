@@ -19,6 +19,8 @@ public:
     void addElemnt(Hatchback *pHatchback);
     void addElemnt(Limousine *pLimousine);
     void addElemnt(SportVehicle *pSportVehicle);
+    void removeElemnt(const int position);
+    void saveAllVehicle();
 };
 
 #endif // VEHICLEMANAGER_H

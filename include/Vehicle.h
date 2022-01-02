@@ -2,6 +2,7 @@
 #define VEHICLE_H
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 struct engineProperties {
   int hp; //horsepower
@@ -48,7 +49,7 @@ class Vehicle {
 		  std::vector<accessories> &rColor,
 		  std::vector<accessories> &rWheels,
 		  std::vector<accessories> &rAdditionalEquipment);
-
+  virtual ~Vehicle();
   std::string getName() const;
   std::string getType() const;
   int getProductionYear() const;
@@ -114,6 +115,7 @@ class Vehicle {
 								 const int &rAccessoriesPrice);
   void changeAdditionalEquipmentProperties(const std::string &rAccessoriesName,
 										   const int &rAccessoriesPrice);
+  virtual void saveToFile() const = 0;
 };
 
 #endif // VEHICLE_H

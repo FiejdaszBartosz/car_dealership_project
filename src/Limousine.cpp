@@ -29,8 +29,33 @@ Limousine::Limousine(std::string &rName,
     aIsLong = false;
 }
 
+Limousine::~Limousine() {}
+
 void Limousine::addLongVersion(){
     aIsLong = true;
     setType("long limousine");
     addVehicleLength(20);
+}
+
+void Limousine::saveToFile() const {
+    std::ofstream output("database.csv", std::ios::app);
+    output << aType << aName << aProductionYear << aVehicleLength << "end" << "\n";
+    for (auto i = aEngine.begin(); i != aEngine.end(); i++)
+        output << i->hp << i->nm << i->fuelType << i->enginePrice;
+    output << "end" << "\n";
+    for (auto i = aInterior.begin(); i != aInterior.end(); i++)
+        output << i->accessoriesName << i->accessoriesPrice;
+    output << "end" << "\n";
+    for (auto i = aColor.begin(); i != aColor.end(); i++)
+        output << i->accessoriesName << i->accessoriesPrice;
+    output << "end" << "\n";
+    for (auto i = aWheels.begin(); i != aWheels.end(); i++)
+        output << i->accessoriesName << i->accessoriesPrice;
+    output << "end" << "\n";
+    for (auto i = aAdditionalEquipment.begin(); i != aAdditionalEquipment.end(); i++)
+        output << i->accessoriesName << i->accessoriesPrice;
+    output << "end" << "\n";
+    output << aIsLong;
+    output << "objectEnd" << "\n";
+    output.close();
 }

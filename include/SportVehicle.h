@@ -18,6 +18,7 @@ public:
                  std::vector<accessories> &rWheels,
                  std::vector<accessories> &rAdditionalEquipment,
                  std::vector<engineProperties> &rEnginePackage);
+    ~SportVehicle();
     std::vector<engineProperties> getEnginePackage() const;
     void setEnginePackage(const std::vector<engineProperties> &rEnginePackageVector);
     void setEnginePackage(const engineProperties &rEnginePackageStruct);
@@ -35,6 +36,7 @@ public:
                                        const int &rEnginePrice);
     void upgradeEngine(int position);
     friend engineProperties operator+(const engineProperties &lhs, const engineProperties &rhs);
+    void saveToFile() const;
 };
 
 engineProperties operator+(const engineProperties &lhs, const engineProperties &rhs);

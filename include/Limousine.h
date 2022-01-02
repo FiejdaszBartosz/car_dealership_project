@@ -17,7 +17,9 @@ public:
               std::vector<accessories> &rColor,
               std::vector<accessories> &rWheels,
               std::vector<accessories> &rAdditionalEquipment);
+    ~Limousine();
     void addLongVersion();
+    void saveToFile() const;
 };
 
 #endif // LIMOUSINE_H

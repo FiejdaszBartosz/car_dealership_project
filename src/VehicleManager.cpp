@@ -30,3 +30,16 @@ void VehicleManager::addElemnt(Limousine *pLimousine){
 void VehicleManager::addElemnt(SportVehicle *pSportVehicle) {
     aVehicleRegister.push_back(pSportVehicle);
 }
+
+void VehicleManager::removeElemnt(const int position) {
+  auto temp = getVehicleRegister();
+  temp.erase(temp.begin() + position);
+  setVehicleRegister(temp);
+}
+
+void VehicleManager::saveAllVehicle() {
+    std::vector<Vehicle*>::iterator iter = aVehicleRegister.begin();
+    for(iter; iter != aVehicleRegister.end(); ++iter) {
+        (*iter)->saveToFile();
+    }
+}

@@ -12,7 +12,6 @@ int main(int argc, char *argv[]) {
 
 #ifdef notTest
   QApplication a(argc, argv);
-  Vehicle nowyPojazd;
   MainWindow w;
   w.show();
   return a.exec();
@@ -57,8 +56,9 @@ int main(int argc, char *argv[]) {
                newSport->getEngine().at(0).nm << std::endl;
 
   SportVehicle *newSport1 = new SportVehicle;
-  VehicleManager newMenager;
-  newMenager.addElemnt(newSport);
+  VehicleManager newManager;
+  newManager.addElemnt(newSport);
+  newManager.saveAllVehicle();
   delete newSport;
   delete newSport1;
   return 0;
