@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.5)
 
 if (WIN32)
     project(car_dealership LANGUAGES CXX)
-elseif(UNIX)
+elseif (UNIX)
     project(car_dealership)
-endif()
+endif ()
 
 set(CMAKE_CONFIGURATION_TYPES "Release;RelWithDebInfo" CACHE STRING "" FORCE)
 
@@ -26,11 +26,11 @@ include_directories(${INCLUDE_DIR})
 include_directories(${SOURCE_DIR})
 
 file(GLOB_RECURSE SOURCES
-    "${FORMS_DIR}/*.ui"
-    "${FORMS_DIR}/*.qrc"
-    "${INCLUDE_DIR}/*.h"
-    "${SOURCE_DIR}/*.cpp"
-)
+        "${FORMS_DIR}/*.ui"
+        "${FORMS_DIR}/*.qrc"
+        "${INCLUDE_DIR}/*.h"
+        "${SOURCE_DIR}/*.cpp"
+        )
 
 # Add the forms directory to the AUTOUIC search paths
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_AUTOUIC_SEARCH_PATHS} ${FORMS_DIR})
@@ -38,9 +38,9 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_AUTOUIC_SEARCH_PATHS} ${FORMS_DIR})
 # Add the executable
 if (WIN32)
     add_executable(MY_PROJECT WIN32 ${SOURCES})
-elseif(UNIX)
+elseif (UNIX)
     add_executable(MY_PROJECT ${SOURCES})
-endif()
+endif ()
 
 # Add the target includes for MY_PROJECT
 target_include_directories(MY_PROJECT PRIVATE ${FORMS_DIR})

@@ -9,6 +9,8 @@ struct engineProperties {
   int nm; //Newton metre
   std::string fuelType;
   int enginePrice;
+
+  struct engineProperties &operator+=(const engineProperties &rhs);
 };
 
 //struct for accessories like leather upholstery 1000PLN
@@ -43,7 +45,7 @@ class Vehicle {
   Vehicle(std::string &rName,
 		  std::string &rType,
 		  int &rProductionYear,
-          int &rVehicleLength,
+		  int &rVehicleLength,
 		  std::vector<engineProperties> &rEngine,
 		  std::vector<accessories> &rInterior,
 		  std::vector<accessories> &rColor,
@@ -59,11 +61,11 @@ class Vehicle {
   std::vector<accessories> getColor() const;
   std::vector<accessories> getWheels() const;
   std::vector<accessories> getAdditionalEquipment() const;
-  void setName(const std::string &rName);
-  void setType(const std::string &rType);
-  void setProductionYear(const int &rProductionYear);
-  void setVehicleLength(const int &rVehicleLength);
-  void addVehicleLength(const int &rAdditionaLenght);
+  void setName(const std::string name);
+  void setType(const std::string type);
+  void setProductionYear(const int productionYear);
+  void setVehicleLength(const int vehicleLength);
+  void addVehicleLength(const int additionaLenght);
   //engine functions section
   void setEngine(const std::vector<engineProperties> &rEngineVector);
   void setEngine(const engineProperties &rEngineStruct);

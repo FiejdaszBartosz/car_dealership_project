@@ -1,5 +1,15 @@
 #include "../include/Vehicle.h"
 
+struct engineProperties &engineProperties::operator+=(const engineProperties &rhs) {
+  hp += rhs.hp;
+  nm += rhs.hp;
+  return *this;
+}
+
+engineProperties operator+(engineProperties lhs, const engineProperties &rhs) {
+  return lhs += rhs;
+}
+
 //creates engine struct from input and returns it by reference
 void Vehicle::createEngine(const int &rHp,
 						   const int &rNm,
@@ -28,14 +38,14 @@ void Vehicle::createAccessories(const std::string &rAccessoriesName,
 Vehicle::Vehicle() :
 	aName("Not set"),
 	aType("Not set"),
-    aProductionYear(0),
-    aVehicleLength(0){}
+	aProductionYear(0),
+	aVehicleLength(0) {}
 
 //setting by declared value
 Vehicle::Vehicle(std::string &rName,
 				 std::string &rType,
 				 int &rProductionYear,
-                 int &rVehicleLength,
+				 int &rVehicleLength,
 				 std::vector<engineProperties> &rEngine,
 				 std::vector<accessories> &rInterior,
 				 std::vector<accessories> &rColor,
@@ -44,7 +54,7 @@ Vehicle::Vehicle(std::string &rName,
 	aName(rName),
 	aType(rType),
 	aProductionYear(rProductionYear),
-    aVehicleLength(rVehicleLength),
+	aVehicleLength(rVehicleLength),
 	aEngine(rEngine),
 	aInterior(rInterior),
 	aColor(rColor),
@@ -89,26 +99,26 @@ std::vector<accessories> Vehicle::getAdditionalEquipment() const {
   return aAdditionalEquipment;
 }
 
-void Vehicle::setName(const std::string &rName) {
-  this->aName = rName;
+void Vehicle::setName(const std::string name) {
+  this->aName = name;
 }
 
-void Vehicle::setType(const std::string &rType) {
-  this->aType = rType;
+void Vehicle::setType(const std::string type) {
+  this->aType = type;
 }
 
-void Vehicle::setProductionYear(const int &rProductionYear) {
-  this->aProductionYear = rProductionYear;
+void Vehicle::setProductionYear(const int productionYear) {
+  this->aProductionYear = productionYear;
 }
 
-void Vehicle::setVehicleLength(const int &rVehicleLength) {
-  this->aVehicleLength = rVehicleLength;
+void Vehicle::setVehicleLength(const int vehicleLength) {
+  this->aVehicleLength = vehicleLength;
 }
 
-void Vehicle::addVehicleLength(const int &rAdditionaLenght) {
-    int temp = getVehicleLength();
-    temp += rAdditionaLenght;
-    setVehicleLength(temp);
+void Vehicle::addVehicleLength(const int additionaLenght) {
+  int temp = getVehicleLength();
+  temp += additionaLenght;
+  setVehicleLength(temp);
 }
 
 //engine functions section
