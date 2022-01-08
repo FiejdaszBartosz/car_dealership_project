@@ -39,20 +39,35 @@ void Limousine::addLongVersion() {
 void Limousine::saveToFile() const {
   std::ofstream output("database.csv", std::ios::app);
   output << aType << "," << aName << "," << aProductionYear << "," << aVehicleLength << "\n";
-  for (auto i = aEngine.begin(); i != aEngine.end(); i++)
+  for (auto i = aEngine.begin(); i != aEngine.end(); ++i) {
 	output << i->hp << "," << i->nm << "," << i->fuelType << "," << i->enginePrice;
+	if (i != (aEngine.end() - 1))
+	  output << ",";
+  }
   output << "\n";
-  for (auto i = aInterior.begin(); i != aInterior.end(); i++)
+  for (auto i = aInterior.begin(); i != aInterior.end(); i++) {
 	output << i->accessoriesName << "," << i->accessoriesPrice;
+	if (i != (aInterior.end() - 1))
+	  output << ",";
+  }
   output << "\n";
-  for (auto i = aColor.begin(); i != aColor.end(); i++)
+  for (auto i = aColor.begin(); i != aColor.end(); i++) {
 	output << i->accessoriesName << "," << i->accessoriesPrice;
+	if (i != (aColor.end() - 1))
+	  output << ",";
+  }
   output << "\n";
-  for (auto i = aWheels.begin(); i != aWheels.end(); i++)
+  for (auto i = aWheels.begin(); i != aWheels.end(); i++) {
 	output << i->accessoriesName << "," << i->accessoriesPrice;
+	if (i != (aWheels.end() - 1))
+	  output << ",";
+  }
   output << "\n";
-  for (auto i = aAdditionalEquipment.begin(); i != aAdditionalEquipment.end(); i++)
+  for (auto i = aAdditionalEquipment.begin(); i != aAdditionalEquipment.end(); i++) {
 	output << i->accessoriesName << "," << i->accessoriesPrice;
+	if (i != (aAdditionalEquipment.end() - 1))
+	  output << ",";
+  }
   output << "\n";
   output << aIsLong;
   output << "\n";

@@ -163,7 +163,11 @@ void Vehicle::removeEngine(const int &rHp,
 void Vehicle::changeEngineProperties(const int &rHp,
 									 const int &rNm,
 									 const std::string &rFuelType,
-									 const int &rEnginePrice) {
+									 const int &rEnginePrice,
+									 const int &rNewHp,
+									 const int &rNewNm,
+									 const std::string &rNewFuelType,
+									 const int &rNewEnginePrice) {
   auto temp = getEngine();
   for (auto i = temp.begin(); i != temp.end(); i++) {
 	if (i->hp == rHp &&
@@ -176,7 +180,7 @@ void Vehicle::changeEngineProperties(const int &rHp,
 	}
   }
   engineProperties tempEngine;
-  createEngine(rHp, rNm, rFuelType, rEnginePrice, tempEngine);
+  createEngine(rNewHp, rNewNm, rNewFuelType, rNewEnginePrice, tempEngine);
   temp.push_back(tempEngine);
   setEngine(temp);
 }
@@ -214,7 +218,9 @@ void Vehicle::removeInterior(const std::string &rAccessoriesName,
 
 //Change interior with the given values
 void Vehicle::changeInteriorProperties(const std::string &rAccessoriesName,
-									   const int &rAccessoriesPrice) {
+									   const int &rAccessoriesPrice,
+									   const std::string &rNewAccessoriesName,
+									   const int &rNewAccessoriesPrice) {
   auto temp = getInterior();
   for (auto i = temp.begin(); i != temp.end(); i++) {
 	if (i->accessoriesName == rAccessoriesName &&
@@ -225,7 +231,7 @@ void Vehicle::changeInteriorProperties(const std::string &rAccessoriesName,
 	}
   }
   accessories tempAccessories;
-  createAccessories(rAccessoriesName, rAccessoriesPrice, tempAccessories);
+  createAccessories(rNewAccessoriesName, rNewAccessoriesPrice, tempAccessories);
   temp.push_back(tempAccessories);
   setInterior(temp);
 }
@@ -263,7 +269,9 @@ void Vehicle::removeColor(const std::string &rAccessoriesName,
 }
 
 void Vehicle::changeColorProperties(const std::string &rAccessoriesName,
-									const int &rAccessoriesPrice) {
+									const int &rAccessoriesPrice,
+									const std::string &rNewAccessoriesName,
+									const int &rNewAccessoriesPrice) {
   auto temp = getColor();
   for (auto i = temp.begin(); i != temp.end(); i++) {
 	if (i->accessoriesName == rAccessoriesName &&
@@ -274,7 +282,7 @@ void Vehicle::changeColorProperties(const std::string &rAccessoriesName,
 	}
   }
   accessories tempAccessories;
-  createAccessories(rAccessoriesName, rAccessoriesPrice, tempAccessories);
+  createAccessories(rNewAccessoriesName, rNewAccessoriesPrice, tempAccessories);
   temp.push_back(tempAccessories);
   setColor(temp);
 }
@@ -309,7 +317,9 @@ void Vehicle::removeWheels(const std::string &rAccessoriesName,
 }
 
 void Vehicle::changeWheelsProperties(const std::string &rAccessoriesName,
-									 const int &rAccessoriesPrice) {
+									 const int &rAccessoriesPrice,
+									 const std::string &rNewAccessoriesName,
+									 const int &rNewAccessoriesPrice) {
   auto temp = getWheels();
   for (auto i = temp.begin(); i != temp.end(); i++) {
 	if (i->accessoriesName == rAccessoriesName &&
@@ -320,7 +330,7 @@ void Vehicle::changeWheelsProperties(const std::string &rAccessoriesName,
 	}
   }
   accessories tempAccessories;
-  createAccessories(rAccessoriesName, rAccessoriesPrice, tempAccessories);
+  createAccessories(rNewAccessoriesName, rNewAccessoriesPrice, tempAccessories);
   temp.push_back(tempAccessories);
   setWheels(temp);
 }
@@ -355,7 +365,9 @@ void Vehicle::removeAdditionalEquipment(const std::string &rAccessoriesName,
 }
 
 void Vehicle::changeAdditionalEquipmentProperties(const std::string &rAccessoriesName,
-												  const int &rAccessoriesPrice) {
+												  const int &rAccessoriesPrice,
+												  const std::string &rNewAccessoriesName,
+												  const int &rNewAccessoriesPrice) {
   auto temp = getWheels();
   for (auto i = temp.begin(); i != temp.end(); i++) {
 	if (i->accessoriesName == rAccessoriesName &&
@@ -366,7 +378,7 @@ void Vehicle::changeAdditionalEquipmentProperties(const std::string &rAccessorie
 	}
   }
   accessories tempAccessories;
-  createAccessories(rAccessoriesName, rAccessoriesPrice, tempAccessories);
+  createAccessories(rNewAccessoriesName, rNewAccessoriesPrice, tempAccessories);
   temp.push_back(tempAccessories);
   setAdditionalEquipment(temp);
 }

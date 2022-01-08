@@ -41,6 +41,7 @@ int main(int argc, char *argv[]) {
 
   SportVehicle *newSport = new SportVehicle;
   newSport->addEngine(300, 500, "petrol", 15000);
+  newSport->addEngine(600, 700, "petrol", 250000);
   newSport->addInterior("brown leather", 15000);
   newSport->addColor("black metallic", 3000);
   newSport->addWheels("18", 5000);
@@ -55,13 +56,27 @@ int main(int argc, char *argv[]) {
 			newSport->getEngine().at(0).hp << std::endl <<
 			newSport->getEngine().at(0).nm << std::endl;
 
+  Limousine *newLimo = new Limousine;
+  newLimo->addEngine(300, 500, "petrol", 15000);
+  newLimo->addEngine(600, 700, "petrol", 250000);
+  newLimo->addInterior("brown leather", 15000);
+  newLimo->addColor("black metallic", 3000);
+  newLimo->addWheels("18", 5000);
+  newLimo->addAdditionalEquipment("panoramic roof", 5000);
+  newLimo->setName("S class");
+  newLimo->setProductionYear(2020);
+  newLimo->setVehicleLength(2100);
+  newLimo->addLongVersion();
+
   SportVehicle *newSport1 = new SportVehicle;
   VehicleManager newManager;
-  newManager.addElemnt(newHatchback);
+  newManager.addElemnt(newSport);
   newManager.saveAllVehicle();
   newManager.loadAllVehicle();
   delete newSport;
   delete newSport1;
+  delete newHatchback;
+  delete newLimo;
   return 0;
 #endif //test
 }

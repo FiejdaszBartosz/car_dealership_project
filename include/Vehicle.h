@@ -80,7 +80,11 @@ class Vehicle {
   void changeEngineProperties(const int &rHp,
 							  const int &rNm,
 							  const std::string &rFuelType,
-							  const int &rEnginePrice);
+							  const int &rEnginePrice,
+							  const int &rNewHp,
+							  const int &rNewNm,
+							  const std::string &rNewFuelType,
+							  const int &rNewEnginePrice);
   //interior functions section
   void setInterior(const std::vector<accessories> &rInteriorVector);
   void setInterior(const accessories &rInteriorStruct);
@@ -89,7 +93,9 @@ class Vehicle {
   void removeInterior(const std::string &rAccessoriesName,
 					  const int &rAccessoriesPrice);
   void changeInteriorProperties(const std::string &rAccessoriesName,
-								const int &rAccessoriesPrice);
+								const int &rAccessoriesPrice,
+								const std::string &rNewAccessoriesName,
+								const int &rNewAccessoriesPrice);
   //color functions section
   void setColor(const std::vector<accessories> &rColorVector);
   void setColor(const accessories &rColor);
@@ -98,7 +104,9 @@ class Vehicle {
   void removeColor(const std::string &rAccessoriesName,
 				   const int &rAccessoriesPrice);
   void changeColorProperties(const std::string &rAccessoriesName,
-							 const int &rAccessoriesPrice);
+							 const int &rAccessoriesPrice,
+							 const std::string &rNewAccessoriesName,
+							 const int &rNewAccessoriesPrice);
   //wheels functions section
   void setWheels(const std::vector<accessories> &rWheels);
   void setWheels(const accessories &rWheels);
@@ -107,7 +115,9 @@ class Vehicle {
   void removeWheels(const std::string &rAccessoriesName,
 					const int &rAccessoriesPrice);
   void changeWheelsProperties(const std::string &rAccessoriesName,
-							  const int &rAccessoriesPrice);
+							  const int &rAccessoriesPrice,
+							  const std::string &rNewAccessoriesName,
+							  const int &rNewAccessoriesPrice);
   //additional equipment functions section
   void setAdditionalEquipment(const std::vector<accessories> &rAdditionalEquipment);
   void setAdditionalEquipment(const accessories &rAdditionalEquipment);
@@ -116,7 +126,9 @@ class Vehicle {
   void removeAdditionalEquipment(const std::string &rAccessoriesName,
 								 const int &rAccessoriesPrice);
   void changeAdditionalEquipmentProperties(const std::string &rAccessoriesName,
-										   const int &rAccessoriesPrice);
+										   const int &rAccessoriesPrice,
+										   const std::string &rNewAccessoriesName,
+										   const int &rNewAccessoriesPrice);
   virtual void saveToFile() const = 0;
 };
 
