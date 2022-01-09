@@ -5,9 +5,7 @@ VehicleManager::VehicleManager() {
 }
 
 VehicleManager::~VehicleManager() {
-  for (std::vector<Vehicle *>::iterator it = aVehicleRegister.begin(); it != aVehicleRegister.end(); ++it) {
-	delete *it;
-  }
+
 }
 
 std::vector<Vehicle *> VehicleManager::getVehicleRegister() const {
@@ -96,7 +94,7 @@ void VehicleManager::loadAllVehicle() {
 		  pTempHatchback->setVehicleLength(tempInt1);
 		  break;
 		case 1:                                                                    //loads engines
-		  for (int j = 0; j < row.size(); j += 5) {
+          for (int j = 0; j < row.size(); j += 4) {
 			tempString = row.at(j);
 			tempInt1 = std::stoi(tempString);
 			tempString = row.at(j + 1);
@@ -170,7 +168,7 @@ void VehicleManager::loadAllVehicle() {
 		  pTempLimousine->setVehicleLength(tempInt1);
 		  break;
 		case 1:                                                                    //loads engines
-		  for (int j = 0; j < row.size(); j += 5) {
+          for (int j = 0; j < row.size(); j += 4) {
 			tempString = row.at(j);
 			tempInt1 = std::stoi(tempString);
 			tempString = row.at(j + 1);
@@ -251,7 +249,7 @@ void VehicleManager::loadAllVehicle() {
 		  pTempSportVehicle->setVehicleLength(tempInt1);
 		  break;
 		case 1:                                                                    //loads engines
-		  for (int j = 0; j < row.size(); j += 5) {
+          for (int j = 0; j < row.size(); j += 4) {
 			tempString = row.at(j);
 			tempInt1 = std::stoi(tempString);
 			tempString = row.at(j + 1);
@@ -302,7 +300,7 @@ void VehicleManager::loadAllVehicle() {
 		  }
 		  break;
 		case 6:                                                                    //enginePackage
-		  for (int j = 0; j < row.size(); ++j) {
+          for (int j = 0; j < row.size(); j += 4) {
 			tempString = row.at(j);
 			tempInt1 = std::stoi(tempString);
 			tempString = row.at(j + 1);
