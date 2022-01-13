@@ -99,9 +99,9 @@ void SportVehicle::upgradeEngine(int position) {
   setEngine(temp);
 }
 
-void SportVehicle::saveToFile() const {
+void SportVehicle::saveToFile(const std::string fileName) const {
   std::ofstream output;
-  output.open("database.csv", std::ios::app);
+  output.open(fileName, std::ios::app);
   output << aType << "," << aName << "," << aProductionYear << "," << aVehicleLength << "\n";
   for (auto i = aEngine.begin(); i != aEngine.end(); ++i) {
 	output << i->hp << "," << i->nm << "," << i->fuelType << "," << i->enginePrice;

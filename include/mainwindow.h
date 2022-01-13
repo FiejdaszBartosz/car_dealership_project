@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
+#include <QFileDialog>
+#include "VehicleManager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -13,8 +16,28 @@ class MainWindow : public QMainWindow {
  public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
+  friend VehicleManager;
+  void setMenager(VehicleManager &rVehicleMenager);
 
- private:
+private slots:
+  void on_addButton_clicked();
+
+  void on_changeButton_clicked();
+
+  void on_deleteButton_clicked();
+
+  void on_showDetails_clicked();
+
+  void on_actionSave_triggered();
+
+  void on_actionLoad_triggered();
+
+  void listHandling();
+
+private:
   Ui::MainWindow *ui;
+  QTimer *timer;
+  VehicleManager aVehicleMenager;
+  QString aDefaultDatabse = "D:\build-jipp_project-Desktop_Qt_6_2_2_MinGW_64_bit-Debug";
 };
 #endif // MAINWINDOW_H

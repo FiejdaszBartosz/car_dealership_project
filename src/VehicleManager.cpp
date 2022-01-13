@@ -12,6 +12,10 @@ std::vector<Vehicle *> VehicleManager::getVehicleRegister() const {
   return aVehicleRegister;
 }
 
+int VehicleManager::getRegisterLenght() const {
+    return aVehicleRegister.size();
+}
+
 void VehicleManager::setVehicleRegister(const std::vector<Vehicle *> vehicleRegister) {
   this->aVehicleRegister = vehicleRegister;
 }
@@ -51,22 +55,25 @@ bool VehicleManager::checkType(std::string &rType, int &rTypeNumber, int &rAttri
 	return false;
 }
 
-void VehicleManager::saveAllVehicle() {
+void VehicleManager::saveAllVehicle(const std::string fileName) {
   for (std::vector<Vehicle *>::iterator iter = aVehicleRegister.begin(); iter != aVehicleRegister.end(); ++iter) {
-	(*iter)->saveToFile();
+    (*iter)->saveToFile(fileName);
   }
 }
 
-void VehicleManager::loadAllVehicle() {
+void VehicleManager::loadAllVehicle(const std::string fileName) {
   bool checkTypeFlag = false;
   std::fstream input;
   std::vector<std::string> row;
   std::string line, word;
   int typeNumber = 0, attributesNumber = 0, i = 0;
-  input.open("database.csv", std::ios::in);
+  input.open(fileName, std::ios::in);
   Hatchback *pTempHatchback = new Hatchback;
   Limousine *pTempLimousine = new Limousine;
   SportVehicle *pTempSportVehicle = new SportVehicle;
+  bool isSetHatchback = false,
+       isSetLimousine = false,
+       isSetSportVehicle = false;
 
   while (getline(input, line)) {                                            //saves all line to line variable
 	std::stringstream s(line);
@@ -149,8 +156,12 @@ void VehicleManager::loadAllVehicle() {
 	  }
 	  i++;
 	  row.clear();
-	  if (i == 6)
-		addElemnt(pTempHatchback);
+      if (i == 6){
+          addElemnt(pTempHatchback);
+          isSetHatchback = true;
+          checkTypeFlag = false;
+          i = 0;
+      }
 	} else if (typeNumber == 1 && i < 7) {                                            //case for limousine
 	  int tempInt1 = 0, tempInt2 = 0, tempInt3 = 0;
 	  std::string tempString;
@@ -231,8 +242,12 @@ void VehicleManager::loadAllVehicle() {
 	  }
 	  i++;
 	  row.clear();
-	  if (i == 7)
-		addElemnt(pTempLimousine);
+      if (i == 7){
+          addElemnt(pTempLimousine);
+          isSetLimousine = true;
+          checkTypeFlag = false;
+          i = 0;
+      }
 	} else if (typeNumber == 2 && i < 7) {                                            //case for sportVehicle
 	  int tempInt1 = 0, tempInt2 = 0, tempInt3 = 0;
 	  std::string tempString;
@@ -319,13 +334,20 @@ void VehicleManager::loadAllVehicle() {
 	  }
 	  i++;
 	  row.clear();
-	  if (i == 7)
-		addElemnt(pTempLimousine);
+      if (i == 7){
+          addElemnt(pTempSportVehicle);
+          isSetSportVehicle = true;
+          checkTypeFlag = false;
+          i = 0;
+      }
 	} else
 	  std::cout << "Unexpected error\n";
   }
-  delete pTempHatchback;
-  delete pTempLimousine;
-  delete pTempSportVehicle;
+  if(!isSetHatchback)
+    delete pTempHatchback;
+  if(!isSetLimousine)
+    delete pTempLimousine;
+  if(!isSetSportVehicle)
+    delete pTempSportVehicle;
   input.close();
 }

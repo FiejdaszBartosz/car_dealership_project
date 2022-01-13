@@ -129,7 +129,7 @@ class Vehicle {
 										   const int &rAccessoriesPrice,
 										   const std::string &rNewAccessoriesName,
 										   const int &rNewAccessoriesPrice);
-  virtual void saveToFile() const = 0;
+  virtual void saveToFile(const std::string fileName) const = 0;
 };
 
 #endif // VEHICLE_H

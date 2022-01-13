@@ -18,7 +18,7 @@ class Limousine : public Vehicle {
 			std::vector<accessories> &rAdditionalEquipment);
   ~Limousine();
   void addLongVersion();
-  void saveToFile() const;
+  void saveToFile(const std::string fileName) const;
 };
 
 #endif // LIMOUSINE_H

@@ -16,14 +16,15 @@ class VehicleManager {
   VehicleManager();
   ~VehicleManager();
   std::vector<Vehicle *> getVehicleRegister() const;
+  int getRegisterLenght() const;
   void setVehicleRegister(const std::vector<Vehicle *> vehicleRegister);
   void addElemnt(Hatchback *pHatchback);
   void addElemnt(Limousine *pLimousine);
   void addElemnt(SportVehicle *pSportVehicle);
   void removeElemnt(const int position);
   bool checkType(std::string &rType, int &rTypeNumber, int &rAttributesNumber) const;
-  void saveAllVehicle();
-  void loadAllVehicle();
+  void saveAllVehicle(const std::string fileName);
+  void loadAllVehicle(const std::string fileName);
 };
 
 #endif // VEHICLEMANAGER_H

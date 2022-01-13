@@ -8,11 +8,13 @@
 #include <QApplication>
 
 int main(int argc, char *argv[]) {
-#define test
+    VehicleManager mainManager;
+#define QT
 
-#ifdef notTest
+#ifdef QT
   QApplication a(argc, argv);
   MainWindow w;
+  w.setMenager(mainManager);
   w.show();
   return a.exec();
 #endif //notTest

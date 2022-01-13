@@ -27,8 +27,8 @@ Hatchback::Hatchback(std::string &rName,
 
 Hatchback::~Hatchback() {}
 
-void Hatchback::saveToFile() const {
-  std::ofstream output("database.csv", std::ios::app);
+void Hatchback::saveToFile(const std::string fileName) const {
+  std::ofstream output(fileName, std::ios::app);
   output << aType << "," << aName << "," << aProductionYear << "," << aVehicleLength << "\n";
   for (auto i = aEngine.begin(); i != aEngine.end(); ++i) {
 	output << i->hp << "," << i->nm << "," << i->fuelType << "," << i->enginePrice;
