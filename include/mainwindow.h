@@ -2,9 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTimer>
 #include <QFileDialog>
 #include "VehicleManager.h"
+#include "NewHatchbackForm.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,7 +36,7 @@ private slots:
 
 private:
   Ui::MainWindow *ui;
-  QTimer *timer;
+  NewHatchbackForm *newHatchbackForm = new NewHatchbackForm();
   VehicleManager aVehicleMenager;
   QString aDefaultDatabse = "D:\build-jipp_project-Desktop_Qt_6_2_2_MinGW_64_bit-Debug";
 };

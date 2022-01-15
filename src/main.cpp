@@ -1,4 +1,5 @@
 #include "../include/mainwindow.h"
+#include "../include/NewHatchbackForm.h"
 #include "../include/Vehicle.h"
 #include "../include/Hatchback.h"
 #include "../include/Limousine.h"
@@ -14,7 +15,6 @@ int main(int argc, char *argv[]) {
 #ifdef QT
   QApplication a(argc, argv);
   MainWindow w;
-  w.setMenager(mainManager);
   w.show();
   return a.exec();
 #endif //notTest

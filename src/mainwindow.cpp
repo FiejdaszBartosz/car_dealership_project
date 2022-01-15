@@ -6,7 +6,6 @@
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
-  timer = new QTimer(this);
 
 }
 
@@ -20,7 +19,7 @@ void MainWindow::setMenager(VehicleManager &rVehicleMenager) {
 
 void MainWindow::on_addButton_clicked()
 {
-    QMessageBox::information(this,"information", "Clicked on add");
+    newHatchbackForm->show();
 }
 
 

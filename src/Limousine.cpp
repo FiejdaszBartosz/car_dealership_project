@@ -36,8 +36,8 @@ void Limousine::addLongVersion() {
   addVehicleLength(20);
 }
 
-void Limousine::saveToFile() const {
-  std::ofstream output("database.csv", std::ios::app);
+void Limousine::saveToFile(const std::string fileName) const {
+  std::ofstream output(fileName, std::ios::app);
   output << aType << "," << aName << "," << aProductionYear << "," << aVehicleLength << "\n";
   for (auto i = aEngine.begin(); i != aEngine.end(); ++i) {
 	output << i->hp << "," << i->nm << "," << i->fuelType << "," << i->enginePrice;
