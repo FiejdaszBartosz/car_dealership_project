@@ -43,7 +43,7 @@ void MainWindow::on_showDetails_clicked()
 
 void MainWindow::on_actionSave_triggered()
 {
-    aVehicleMenager.saveAllVehicle(aDefaultDatabse.toStdString());
+    aVehicleMenager.saveAllVehicle(aDefaultDatabse.toUtf8().constData());
 }
 
 
@@ -51,7 +51,7 @@ void MainWindow::on_actionLoad_triggered()
 {
     std::string fileName = QFileDialog::getOpenFileName(this,
                                                     "Load from database",
-                                                     aDefaultDatabse).toStdString();
+                                                     aDefaultDatabse).toUtf8().constData();
     aVehicleMenager.loadAllVehicle(fileName);
     listHandling();
 }

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QString>
+#include <QMessageBox>
 #include "VehicleManager.h"
 #include "lineEditFunctions.h"
 
@@ -25,6 +26,7 @@ private slots:
 private:
     Ui::NewHatchbackForm *ui;
     VehicleManager aVehicleMenager;
+    Hatchback *apTempHatchback;
     bool aIsEngine = false,
          aIsColor = false,
          aIsWheels = false,

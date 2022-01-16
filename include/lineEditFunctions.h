@@ -7,11 +7,10 @@
 #include <math.h>
 #include "MyException.h"
 
-template<class T>
-bool intValuValidation(T &rInput);
+void convertToString(const QString &rInput, std::string &rOutput);
 
-bool stringValuValidation(std::string &rInput);
+void convertToInt(const QString &rInput, int &rOutput);
 
-bool convertToInt(const QString &rInput, int &rOutput);
+void validateYear(const int &rYear);
 
 #endif // LINEEDITFUNCTIONS_H
