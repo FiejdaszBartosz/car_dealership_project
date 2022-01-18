@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>943</width>
-    <height>607</height>
+    <width>939</width>
+    <height>476</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -155,7 +155,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="productionYearLineEdit_4"/>
+            <widget class="QLineEdit" name="nmLineEdit_4"/>
            </item>
            <item>
             <widget class="QLabel" name="fuelTypeLabel_2">
@@ -246,14 +246,14 @@
               <widget class="QLineEdit" name="colorNameLineEdit_2"/>
              </item>
              <item>
-              <widget class="QLabel" name="colorPricLabel_2">
+              <widget class="QLabel" name="colorPriceLabel_2">
                <property name="text">
                 <string>Color Price</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="productionYearLineEdit_8"/>
+              <widget class="QLineEdit" name="colorPriceLineEdit_8"/>
              </item>
             </layout>
            </item>
@@ -314,7 +314,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="interioLineEdit_2"/>
+                <widget class="QLineEdit" name="interioTrimLineEdit_2"/>
                </item>
                <item>
                 <widget class="QLabel" name="interiorPriceLabel_2">
@@ -380,7 +380,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="productionYearLineEdit_14"/>
+              <widget class="QLineEdit" name="wheelsSizeLineEdit_14"/>
              </item>
              <item>
               <widget class="QLabel" name="wheelsPriceLabel_2">
@@ -390,7 +390,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="productionYearLineEdit_15"/>
+              <widget class="QLineEdit" name="wheelsPriceLineEdit_15"/>
              </item>
             </layout>
            </item>

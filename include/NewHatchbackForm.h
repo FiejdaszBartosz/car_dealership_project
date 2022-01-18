@@ -23,15 +23,23 @@ public:
 private slots:
     void on_addToRegisterButton_2_clicked();
 
+    void on_addEngineButton_2_clicked();
+
+private:
+    void setAllIs();
+
 private:
     Ui::NewHatchbackForm *ui;
     VehicleManager aVehicleMenager;
     Hatchback *apTempHatchback;
+
     bool aIsEngine = false,
          aIsColor = false,
          aIsWheels = false,
          aIsInterior = false,
          aIsEquipment = false;
+
+
 };
 
 #endif // NEWHATCHBACKFORM_H

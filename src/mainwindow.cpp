@@ -19,7 +19,8 @@ void MainWindow::setMenager(VehicleManager &rVehicleMenager) {
 
 void MainWindow::on_addButton_clicked()
 {
-    newHatchbackForm->show();
+    newHatchbackForm.setMenager(aVehicleMenager);
+    newHatchbackForm.show();
 }
 
 

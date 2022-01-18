@@ -36,7 +36,7 @@ private slots:
 
 private:
   Ui::MainWindow *ui;
-  NewHatchbackForm *newHatchbackForm = new NewHatchbackForm();
+  NewHatchbackForm newHatchbackForm;
   VehicleManager aVehicleMenager;
   QString aDefaultDatabse = "D:\build-jipp_project-Desktop_Qt_6_2_2_MinGW_64_bit-Debug";
 };
