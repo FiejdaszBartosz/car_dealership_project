@@ -11,42 +11,40 @@ namespace Ui {
 class NewHatchbackForm;
 }
 
-class NewHatchbackForm : public QWidget
-{
-    Q_OBJECT
+class NewHatchbackForm : public QWidget {
+ Q_OBJECT
 
-public:
-    explicit NewHatchbackForm(QWidget *parent = nullptr);
-    ~NewHatchbackForm();
-    void setMenager(VehicleManager &rVehicleMenager);
+ public:
+  explicit NewHatchbackForm(QWidget *parent = nullptr);
+  ~NewHatchbackForm();
+  void setManager(VehicleManager *pVehicleManager);
 
-private slots:
-    void on_addToRegisterButton_2_clicked();
+ private slots:
+  void on_addToRegisterButton_2_clicked();
 
-    void on_addEngineButton_2_clicked();
+  void on_addEngineButton_2_clicked();
 
-    void on_addColorButton_2_clicked();
+  void on_addColorButton_2_clicked();
 
-    void on_addWheelsButton_2_clicked();
+  void on_addWheelsButton_2_clicked();
 
-    void on_addInteriorButton_2_clicked();
+  void on_addInteriorButton_2_clicked();
 
-    void on_addAdditionalEquipment_2_clicked();
+  void on_addAdditionalEquipment_2_clicked();
 
-private:
-    void setAllIs();
+ private:
+  void setAllIs();
 
-private:
-    Ui::NewHatchbackForm *ui;
-    VehicleManager aVehicleMenager;
-    Hatchback *apTempHatchback;
+ private:
+  Ui::NewHatchbackForm *ui;
+  VehicleManager *apVehicleManager;
+  Hatchback *apTempHatchback;
 
-    bool aIsEngine = false,
-         aIsColor = false,
-         aIsWheels = false,
-         aIsInterior = false,
-         aIsEquipment = false;
-
+  bool aIsEngine = false,
+	  aIsColor = false,
+	  aIsWheels = false,
+	  aIsInterior = false,
+	  aIsEquipment = false;
 
 };
 

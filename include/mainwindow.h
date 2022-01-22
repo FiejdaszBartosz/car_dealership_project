@@ -19,9 +19,9 @@ class MainWindow : public QMainWindow {
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
   friend VehicleManager;
-  void setMenager(VehicleManager &rVehicleMenager);
+  void setManager(VehicleManager &rVehicleManager);
 
-private slots:
+ private slots:
   void on_addButton_clicked();
 
   void on_changeButton_clicked();
@@ -40,7 +40,9 @@ private slots:
 
   void on_addSportVehicleButton_clicked();
 
-private:
+  void on_actionReload_triggered();
+
+ private:
   Ui::MainWindow *ui;
   NewHatchbackForm newHatchbackForm;
   NewLimousineForm newLimousineForm;

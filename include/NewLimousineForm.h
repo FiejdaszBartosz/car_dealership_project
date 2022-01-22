@@ -11,42 +11,41 @@ namespace Ui {
 class NewLimousineForm;
 }
 
-class NewLimousineForm : public QWidget
-{
-    Q_OBJECT
+class NewLimousineForm : public QWidget {
+ Q_OBJECT
 
-public:
-    explicit NewLimousineForm(QWidget *parent = nullptr);
-    ~NewLimousineForm();
-    void setMenager(VehicleManager &rVehicleMenager);
+ public:
+  explicit NewLimousineForm(QWidget *parent = nullptr);
+  ~NewLimousineForm();
+  void setManager(VehicleManager *pVehicleManager);
 
-private slots:
-    void on_addEngineButton_2_clicked();
+ private slots:
+  void on_addEngineButton_2_clicked();
 
-    void on_addColorButton_2_clicked();
+  void on_addColorButton_2_clicked();
 
-    void on_addInteriorButton_2_clicked();
+  void on_addInteriorButton_2_clicked();
 
-    void on_addWheelsButton_2_clicked();
+  void on_addWheelsButton_2_clicked();
 
-    void on_addAdditionalEquipment_2_clicked();
+  void on_addAdditionalEquipment_2_clicked();
 
-    void on_addToRegisterButton_2_clicked();
+  void on_addToRegisterButton_2_clicked();
 
-private:
-    void setAllIs();
+ private:
+  void setAllIs();
 
-private:
-    Ui::NewLimousineForm *ui;
-    VehicleManager aVehicleMenager;
-    Limousine *apTempLimousine;
+ private:
+  Ui::NewLimousineForm *ui;
+  VehicleManager *apVehicleManager;
+  Limousine *apTempLimousine;
 
-    bool aIsEngine = false,
-         aIsColor = false,
-         aIsWheels = false,
-         aIsInterior = false,
-         aIsEquipment = false,
-         aIsLongClicked = false;
+  bool aIsEngine = false,
+	  aIsColor = false,
+	  aIsWheels = false,
+	  aIsInterior = false,
+	  aIsEquipment = false,
+	  aIsLongClicked = false;
 };
 
 #endif // NEWLIMOUSINEFORM_H

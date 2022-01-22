@@ -13,7 +13,7 @@ std::vector<Vehicle *> VehicleManager::getVehicleRegister() const {
 }
 
 int VehicleManager::getRegisterLenght() const {
-    return aVehicleRegister.size();
+  return aVehicleRegister.size();
 }
 
 void VehicleManager::setVehicleRegister(const std::vector<Vehicle *> vehicleRegister) {
@@ -57,7 +57,7 @@ bool VehicleManager::checkType(std::string &rType, int &rTypeNumber, int &rAttri
 
 void VehicleManager::saveAllVehicle(const std::string fileName) {
   for (std::vector<Vehicle *>::iterator iter = aVehicleRegister.begin(); iter != aVehicleRegister.end(); ++iter) {
-    (*iter)->saveToFile(fileName);
+	(*iter)->saveToFile(fileName);
   }
 }
 
@@ -72,8 +72,8 @@ void VehicleManager::loadAllVehicle(const std::string fileName) {
   Limousine *pTempLimousine = new Limousine;
   SportVehicle *pTempSportVehicle = new SportVehicle;
   bool isSetHatchback = false,
-       isSetLimousine = false,
-       isSetSportVehicle = false;
+	  isSetLimousine = false,
+	  isSetSportVehicle = false;
 
   while (getline(input, line)) {                                            //saves all line to line variable
 	std::stringstream s(line);
@@ -101,7 +101,7 @@ void VehicleManager::loadAllVehicle(const std::string fileName) {
 		  pTempHatchback->setVehicleLength(tempInt1);
 		  break;
 		case 1:                                                                    //loads engines
-          for (int j = 0; j < row.size(); j += 4) {
+		  for (int j = 0; j < row.size(); j += 4) {
 			tempString = row.at(j);
 			tempInt1 = std::stoi(tempString);
 			tempString = row.at(j + 1);
@@ -156,12 +156,12 @@ void VehicleManager::loadAllVehicle(const std::string fileName) {
 	  }
 	  i++;
 	  row.clear();
-      if (i == 6){
-          addElemnt(pTempHatchback);
-          isSetHatchback = true;
-          checkTypeFlag = false;
-          i = 0;
-      }
+	  if (i == 6) {
+		addElemnt(pTempHatchback);
+		isSetHatchback = true;
+		checkTypeFlag = false;
+		i = 0;
+	  }
 	} else if (typeNumber == 1 && i < 7) {                                            //case for limousine
 	  int tempInt1 = 0, tempInt2 = 0, tempInt3 = 0;
 	  std::string tempString;
@@ -179,7 +179,7 @@ void VehicleManager::loadAllVehicle(const std::string fileName) {
 		  pTempLimousine->setVehicleLength(tempInt1);
 		  break;
 		case 1:                                                                    //loads engines
-          for (int j = 0; j < row.size(); j += 4) {
+		  for (int j = 0; j < row.size(); j += 4) {
 			tempString = row.at(j);
 			tempInt1 = std::stoi(tempString);
 			tempString = row.at(j + 1);
@@ -242,12 +242,12 @@ void VehicleManager::loadAllVehicle(const std::string fileName) {
 	  }
 	  i++;
 	  row.clear();
-      if (i == 7){
-          addElemnt(pTempLimousine);
-          isSetLimousine = true;
-          checkTypeFlag = false;
-          i = 0;
-      }
+	  if (i == 7) {
+		addElemnt(pTempLimousine);
+		isSetLimousine = true;
+		checkTypeFlag = false;
+		i = 0;
+	  }
 	} else if (typeNumber == 2 && i < 7) {                                            //case for sportVehicle
 	  int tempInt1 = 0, tempInt2 = 0, tempInt3 = 0;
 	  std::string tempString;
@@ -264,7 +264,7 @@ void VehicleManager::loadAllVehicle(const std::string fileName) {
 		  pTempSportVehicle->setVehicleLength(tempInt1);
 		  break;
 		case 1:                                                                    //loads engines
-          for (int j = 0; j < row.size(); j += 4) {
+		  for (int j = 0; j < row.size(); j += 4) {
 			tempString = row.at(j);
 			tempInt1 = std::stoi(tempString);
 			tempString = row.at(j + 1);
@@ -315,7 +315,7 @@ void VehicleManager::loadAllVehicle(const std::string fileName) {
 		  }
 		  break;
 		case 6:                                                                    //enginePackage
-          for (int j = 0; j < row.size(); j += 4) {
+		  for (int j = 0; j < row.size(); j += 4) {
 			tempString = row.at(j);
 			tempInt1 = std::stoi(tempString);
 			tempString = row.at(j + 1);
@@ -334,20 +334,20 @@ void VehicleManager::loadAllVehicle(const std::string fileName) {
 	  }
 	  i++;
 	  row.clear();
-      if (i == 7){
-          addElemnt(pTempSportVehicle);
-          isSetSportVehicle = true;
-          checkTypeFlag = false;
-          i = 0;
-      }
+	  if (i == 7) {
+		addElemnt(pTempSportVehicle);
+		isSetSportVehicle = true;
+		checkTypeFlag = false;
+		i = 0;
+	  }
 	} else
 	  std::cout << "Unexpected error\n";
   }
-  if(!isSetHatchback)
-    delete pTempHatchback;
-  if(!isSetLimousine)
-    delete pTempLimousine;
-  if(!isSetSportVehicle)
-    delete pTempSportVehicle;
+  if (!isSetHatchback)
+	delete pTempHatchback;
+  if (!isSetLimousine)
+	delete pTempLimousine;
+  if (!isSetSportVehicle)
+	delete pTempSportVehicle;
   input.close();
 }
