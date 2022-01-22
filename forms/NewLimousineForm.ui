@@ -546,7 +546,7 @@
             </spacer>
            </item>
            <item>
-            <widget class="QRadioButton" name="flaseRadioButton">
+            <widget class="QRadioButton" name="falseRadioButton">
              <property name="font">
               <font>
                <pointsize>10</pointsize>
