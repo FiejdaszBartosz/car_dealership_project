@@ -25,6 +25,14 @@ private slots:
 
     void on_addEngineButton_2_clicked();
 
+    void on_addColorButton_2_clicked();
+
+    void on_addWheelsButton_2_clicked();
+
+    void on_addInteriorButton_2_clicked();
+
+    void on_addAdditionalEquipment_2_clicked();
+
 private:
     void setAllIs();
 

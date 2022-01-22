@@ -5,6 +5,8 @@
 #include <QFileDialog>
 #include "VehicleManager.h"
 #include "NewHatchbackForm.h"
+#include "NewLimousineForm.h"
+#include "NewSportVehicleForm.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,9 +36,15 @@ private slots:
 
   void listHandling();
 
+  void on_addLimousineButton_clicked();
+
+  void on_addSportVehicleButton_clicked();
+
 private:
   Ui::MainWindow *ui;
   NewHatchbackForm newHatchbackForm;
+  NewLimousineForm newLimousineForm;
+  NewSportVehicleForm newSportVehicleForm;
   VehicleManager aVehicleMenager;
   QString aDefaultDatabse = "D:\build-jipp_project-Desktop_Qt_6_2_2_MinGW_64_bit-Debug";
 };

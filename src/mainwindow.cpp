@@ -14,7 +14,7 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::setMenager(VehicleManager &rVehicleMenager) {
-    this->aVehicleMenager = rVehicleMenager;
+   this->aVehicleMenager = rVehicleMenager;
 }
 
 void MainWindow::on_addButton_clicked()
@@ -67,3 +67,15 @@ void MainWindow::listHandling(){
       ui->listWidget->addItem(tempName);
     }
 }
+
+void MainWindow::on_addLimousineButton_clicked()
+{
+  newLimousineForm.show();
+}
+
+
+void MainWindow::on_addSportVehicleButton_clicked()
+{
+  newSportVehicleForm.show();
+}
+

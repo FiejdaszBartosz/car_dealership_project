@@ -298,9 +298,9 @@ void NewHatchbackForm::on_addEngineButton_2_clicked()
         convertToInt(tempQString, tempInt2, aIsEngine);
     } catch(const std::exception &exc) {
         checkInput = false;
-        std::cerr << "During price reading\n";
+        std::cerr << "During engine price reading\n";
         std::cerr << exc.what();
-        QMessageBox::warning(this, "warning", "Incorect price value");
+        QMessageBox::warning(this, "warning", "Incorect engine price value");
     }
 
     if(checkInput == true)
@@ -311,5 +311,157 @@ void NewHatchbackForm::on_addEngineButton_2_clicked()
     ui->priceLineEdit_2->clear();
 
     aIsEngine = true;
+}
+
+
+void NewHatchbackForm::on_addColorButton_2_clicked()
+{
+    int tempInt = 0;
+    QString tempQString;
+    std::string tempString;
+    bool checkInput = true;
+
+    tempQString = ui->colorNameLineEdit_2->text();
+
+    try{
+        convertToString(tempQString, tempString, aIsColor);
+    } catch(const std::exception &exc) {
+        checkInput = false;
+        std::cerr << "During color reading\n";
+        std::cerr << exc.what();
+        QMessageBox::warning(this, "warning", "Incorect color value");
+    }
+
+    tempQString = ui->colorPriceLineEdit_8->text();
+    try{
+        convertToInt(tempQString, tempInt, aIsColor);
+    } catch(const std::exception &exc) {
+        checkInput = false;
+        std::cerr << "During color price reading\n";
+        std::cerr << exc.what();
+        QMessageBox::warning(this, "warning", "Incorect color price value");
+    }
+
+    if(checkInput == true)
+        apTempHatchback->addColor(tempString, tempInt);
+
+    ui->colorNameLineEdit_2->clear();
+    ui->colorPriceLineEdit_8->clear();
+
+    aIsColor = true;
+}
+
+
+void NewHatchbackForm::on_addWheelsButton_2_clicked()
+{
+    int tempInt = 0;
+    QString tempQString;
+    std::string tempString;
+    bool checkInput = true;
+
+    tempQString = ui->wheelsSizeLineEdit_14->text();
+
+    try{
+        convertToString(tempQString, tempString, aIsWheels);
+    } catch(const std::exception &exc) {
+        checkInput = false;
+        std::cerr << "During wheels size reading\n";
+        std::cerr << exc.what();
+        QMessageBox::warning(this, "warning", "Incorect wheels size value");
+    }
+
+    tempQString = ui->wheelsPriceLineEdit_15->text();
+    try{
+        convertToInt(tempQString, tempInt, aIsWheels);
+    } catch(const std::exception &exc) {
+        checkInput = false;
+        std::cerr << "During wheels price reading\n";
+        std::cerr << exc.what();
+        QMessageBox::warning(this, "warning", "Incorect wheels price value");
+    }
+
+    if(checkInput == true)
+        apTempHatchback->addWheels(tempString, tempInt);
+
+    ui->wheelsSizeLineEdit_14->clear();
+    ui->wheelsPriceLineEdit_15->clear();
+
+    aIsWheels = true;
+}
+
+
+void NewHatchbackForm::on_addInteriorButton_2_clicked()
+{
+    int tempInt = 0;
+    QString tempQString;
+    std::string tempString;
+    bool checkInput = true;
+
+    tempQString = ui->interioTrimLineEdit_2->text();
+
+    try{
+        convertToString(tempQString, tempString, aIsInterior);
+    } catch(const std::exception &exc) {
+        checkInput = false;
+        std::cerr << "During interior trim reading\n";
+        std::cerr << exc.what();
+        QMessageBox::warning(this, "warning", "Incorect interior trim value");
+    }
+
+    tempQString = ui->interiorPriceLineEdit_2->text();
+    try{
+        convertToInt(tempQString, tempInt, aIsInterior);
+    } catch(const std::exception &exc) {
+        checkInput = false;
+        std::cerr << "During interior price reading\n";
+        std::cerr << exc.what();
+        QMessageBox::warning(this, "warning", "Incorect interior price value");
+    }
+
+    if(checkInput == true)
+        apTempHatchback->addInterior(tempString, tempInt);
+
+    ui->interioTrimLineEdit_2->clear();
+    ui->interiorPriceLabel_2->clear();
+
+    aIsInterior = true;
+}
+
+
+void NewHatchbackForm::on_addAdditionalEquipment_2_clicked()
+{
+    int tempInt = 0;
+    QString tempQString;
+    std::string tempString;
+    bool checkInput = true;
+
+    tempQString = ui->equipmentLineEdit_2->text();
+
+    try{
+        convertToString(tempQString, tempString, aIsEquipment);
+    } catch(const std::exception &exc) {
+        checkInput = false;
+        std::cerr << "During additional equipment reading\n";
+        std::cerr << exc.what();
+        QMessageBox::warning(this, "warning", "Incorect additional equipment value");
+    }
+
+    tempQString = ui->equipmentPriceLineEdit_2->text();
+    try{
+        convertToInt(tempQString, tempInt, aIsEquipment);
+    } catch(const std::exception &exc) {
+        checkInput = false;
+        std::cerr << "During additional equipment price reading\n";
+        std::cerr << exc.what();
+        QMessageBox::warning(this, "warning", "Incorect additional equipment price value");
+    }
+
+    if(checkInput == true)
+        apTempHatchback->addAdditionalEquipment(tempString, tempInt);
+
+    ui->equipmentLineEdit_2->clear();
+    ui->equipmentPriceLineEdit_2->clear();
+
+    aIsEquipment = true;
 }
 
