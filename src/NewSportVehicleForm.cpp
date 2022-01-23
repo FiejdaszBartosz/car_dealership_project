@@ -5,6 +5,7 @@ NewSportVehicleForm::NewSportVehicleForm(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NewSportVehicleForm) {
   ui->setupUi(this);
+  apTempSportVehicle = new SportVehicle;
   ui->fuelTypeComboBox_2->addItem("petrol");
   ui->fuelTypeComboBox_2->addItem("diesel");
   ui->fuelTypeComboBox_2->addItem("electric");
@@ -18,7 +19,7 @@ NewSportVehicleForm::~NewSportVehicleForm() {
 }
 
 void NewSportVehicleForm::setManager(VehicleManager *pVehicleManager) {
-  this->apVehicleManager = pVehicleMenager;
+  this->apVehicleManager = pVehicleManager;
 }
 
 void NewSportVehicleForm::setAllIs() {
@@ -300,7 +301,7 @@ void NewSportVehicleForm::on_addToRegisterButton_2_clicked() {
   }
 
   if (checkInput == true) {
-	apVehicleMenager->addElemnt(apTempSportVehicle);
+    apVehicleManager->addElemnt(apTempSportVehicle);
 	setAllIs();
 	ui->hpLineEdit_2->clear();
 	ui->nmLineEdit_4->clear();
@@ -314,6 +315,11 @@ void NewSportVehicleForm::on_addToRegisterButton_2_clicked() {
 	ui->hpLineEdit_3->clear();
 	ui->nmLineEdit_5->clear();
 	ui->priceLineEdit_3->clear();
+    ui->interioTrimLineEdit_2->clear();
+    ui->interiorPriceLineEdit_2->clear();
+    ui->nameLineEdit_2->clear();
+    ui->productionYearLineEdit_2->clear();
+    ui->vehicleLenghtLineEdit_2->clear();
   }
 }
 

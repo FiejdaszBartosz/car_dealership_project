@@ -13,7 +13,7 @@ NewHatchbackForm::NewHatchbackForm(QWidget *parent) :
 
 NewHatchbackForm::~NewHatchbackForm() {
   delete ui;
-  delete apTempHatchback;
+  //delete apTempHatchback;
 }
 
 void NewHatchbackForm::setManager(VehicleManager *pVehicleManager) {
@@ -247,7 +247,7 @@ void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
   }
 
   if (checkInput == true) {
-	apVehicleMenager->addElemnt(apTempHatchback);
+    apVehicleManager->addElemnt(apTempHatchback);
 	setAllIs();
 	ui->hpLineEdit_2->clear();
 	ui->nmLineEdit_4->clear();
@@ -258,6 +258,11 @@ void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
 	ui->wheelsPriceLineEdit_15->clear();
 	ui->equipmentLineEdit_2->clear();
 	ui->equipmentPriceLineEdit_2->clear();
+    ui->interioTrimLineEdit_2->clear();
+    ui->interiorPriceLineEdit_2->clear();
+    ui->nameLineEdit_2->clear();
+    ui->productionYearLineEdit_2->clear();
+    ui->vehicleLenghtLineEdit_2->clear();
   }
 }
 

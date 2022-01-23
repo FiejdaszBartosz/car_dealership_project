@@ -19,6 +19,7 @@ class Limousine : public Vehicle {
   ~Limousine();
   void addLongVersion();
   void saveToFile(const std::string fileName) const;
+  std::string showInformation() const;
 };
 
 #endif // LIMOUSINE_H

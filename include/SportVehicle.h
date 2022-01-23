@@ -35,6 +35,7 @@ class SportVehicle : public Vehicle {
 									 const int &rEnginePrice);
   void upgradeEngine(int position);
   void saveToFile(const std::string fileName) const;
+  std::string showInformation() const;
 };
 
 #endif // SPORTVEHICLE_H

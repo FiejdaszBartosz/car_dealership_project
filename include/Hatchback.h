@@ -16,6 +16,7 @@ class Hatchback : public Vehicle {
 			std::vector<accessories> &rAdditionalEquipment);
   ~Hatchback();
   void saveToFile(const std::string fileName) const;
+  std::string showInformation() const;
 };
 
 #endif // HATCHBACK_H

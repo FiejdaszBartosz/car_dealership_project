@@ -1,7 +1,6 @@
 #include "../include/mainwindow.h"
 #include "../include/Vehicle.h"
 #include "./ui_mainwindow.h"
-#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -27,11 +26,39 @@ void MainWindow::on_changeButton_clicked() {
 }
 
 void MainWindow::on_deleteButton_clicked() {
-  QMessageBox::information(this, "information", "Clicked on delete");
+  int i = -1;
+  i = ui->listWidget->currentRow();
+  if(i != -1){
+      qDeleteAll(ui->listWidget->selectedItems());
+      this->aVehicleMenager.removeElemnt(i);
+  } else {
+      QMessageBox::warning(this, "warning", "You haven't selected any item");
+      throw MyException("warning",
+                        "User hasn't selected any item",
+                        "mainwindow.cpp",
+                        "on_deleteButton_clicked",
+                        "35");
+  }
+
+
 }
 
 void MainWindow::on_showDetails_clicked() {
-  QMessageBox::information(this, "information", "Clicked on showDetails");
+  int i = -1;
+  i = ui->listWidget->currentRow();
+  if(i != -1) {
+  std::vector<Vehicle *> tempRegister;
+  tempRegister = aVehicleMenager.getVehicleRegister();
+  std::string informationText = tempRegister.at(i)->showInformation();
+  QMessageBox::information(this, "details", QString::fromUtf8(informationText));
+  } else {
+      QMessageBox::warning(this, "warning", "You haven't selected any item");
+      throw MyException("warning",
+                        "User hasn't selected any item",
+                        "mainwindow.cpp",
+                        "on_showDetails_clicked",
+                        "56");
+  }
 }
 
 void MainWindow::on_actionSave_triggered() {

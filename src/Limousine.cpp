@@ -73,3 +73,49 @@ void Limousine::saveToFile(const std::string fileName) const {
   output << "\n";
   output.close();
 }
+
+std::string Limousine::showInformation() const{
+  std::string information;
+  information = "Name: " + getName() + "\n";
+  information = information + "Typ: " + getType() + "\n";
+  information = information + "Length: " + std::to_string(getVehicleLength()) + "\n";
+  information = information + "Production Year: " + std::to_string(getProductionYear()) + "\n";
+  information += "Is Long: ";
+  if(aIsLong == true)
+      information += "True\n";
+  else
+      information += "False\n";
+
+  auto tempEngine = getEngine();
+  for(auto i = tempEngine.begin(); i != tempEngine.end(); i++){
+    information = information + "HP: " + std::to_string(i->hp) + " Nm: " + std::to_string(i->hp)
+            + " Petrol: " + i->fuelType + " Price: " + std::to_string(i->enginePrice) + "\n";
+  }
+
+  auto tempInterior = getInterior();
+  for(auto i = tempInterior.begin(); i != tempInterior.end(); i++){
+    information = information + "Interior trim: " + i->accessoriesName + " Price: "
+            + std::to_string(i->accessoriesPrice) + "\n";
+  }
+
+  auto tempColor = getColor();
+  for(auto i = tempColor.begin(); i != tempColor.end(); i++){
+    information = information + "Color: " + i->accessoriesName + " Price: "
+            + std::to_string(i->accessoriesPrice) + "\n";
+  }
+
+  auto tempWheels = getWheels();
+  for(auto i = tempWheels.begin(); i != tempWheels.end(); i++){
+    information = information + "Wheels size: " + i->accessoriesName + " Price: "
+            + std::to_string(i->accessoriesPrice) + "\n";
+  }
+
+  information += "Additional Equipment:\n";
+  auto tempAdditionalEquipment = getAdditionalEquipment();
+  for(auto i = tempAdditionalEquipment.begin(); i != tempAdditionalEquipment.end(); i++){
+    information = information + i->accessoriesName + " Price: "
+            + std::to_string(i->accessoriesPrice) + "\n";
+  }
+
+  return information;
+}

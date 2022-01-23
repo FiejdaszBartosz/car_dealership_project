@@ -1,6 +1,7 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 #include <iostream>
+#include <string.h>
 #include <vector>
 #include <fstream>
 
@@ -130,6 +131,7 @@ class Vehicle {
 										   const std::string &rNewAccessoriesName,
 										   const int &rNewAccessoriesPrice);
   virtual void saveToFile(const std::string fileName) const = 0;
+  virtual std::string showInformation() const = 0;
 };
 
 #endif // VEHICLE_H

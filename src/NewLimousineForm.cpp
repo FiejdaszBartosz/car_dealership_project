@@ -5,6 +5,7 @@ NewLimousineForm::NewLimousineForm(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NewLimousineForm) {
   ui->setupUi(this);
+  apTempLimousine = new Limousine;
   ui->falseRadioButton->setChecked(true);
   ui->fuelTypeComboBox_2->addItem("petrol");
   ui->fuelTypeComboBox_2->addItem("diesel");
@@ -13,7 +14,7 @@ NewLimousineForm::NewLimousineForm(QWidget *parent) :
 
 NewLimousineForm::~NewLimousineForm() {
   delete ui;
-  delete apTempLimousine;
+  //delete apTempLimousine;
 }
 
 void NewLimousineForm::setManager(VehicleManager *pVehicleManager) {
@@ -452,7 +453,7 @@ void NewLimousineForm::on_addToRegisterButton_2_clicked() {
 	apTempLimousine->addLongVersion();
 
   if (checkInput == true) {
-	apVehicleMenager->addElemnt(apTempLimousine);
+    apVehicleManager->addElemnt(apTempLimousine);
 	setAllIs();
 	ui->hpLineEdit_2->clear();
 	ui->nmLineEdit_4->clear();
@@ -464,6 +465,11 @@ void NewLimousineForm::on_addToRegisterButton_2_clicked() {
 	ui->equipmentLineEdit_2->clear();
 	ui->equipmentPriceLineEdit_2->clear();
 	ui->falseRadioButton->setChecked(true);
+    ui->interioTrimLineEdit_2->clear();
+    ui->interiorPriceLineEdit_2->clear();
+    ui->nameLineEdit_2->clear();
+    ui->productionYearLineEdit_2->clear();
+    ui->vehicleLenghtLineEdit_2->clear();
   }
 }
 

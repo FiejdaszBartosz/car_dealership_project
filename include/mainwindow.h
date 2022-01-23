@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
+#include <QMessageBox>
 #include "VehicleManager.h"
 #include "NewHatchbackForm.h"
 #include "NewLimousineForm.h"
