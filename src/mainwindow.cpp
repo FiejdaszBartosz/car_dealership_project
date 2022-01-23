@@ -100,3 +100,6 @@ void MainWindow::on_actionReload_triggered() {
   listHandling();
 }
 
+void MainWindow::setUser(Account *pAccount) {
+    this->pUser = pAccount;
+}

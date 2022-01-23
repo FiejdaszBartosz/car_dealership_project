@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QMessageBox>
+#include "Account.h"
 #include "VehicleManager.h"
 #include "NewHatchbackForm.h"
 #include "NewLimousineForm.h"
@@ -21,6 +22,10 @@ class MainWindow : public QMainWindow {
   ~MainWindow();
   friend VehicleManager;
   void setManager(VehicleManager &rVehicleManager);
+  void setUser(Account *pAccount);
+
+ public:
+  Account *pUser;
 
  private slots:
   void on_addButton_clicked();

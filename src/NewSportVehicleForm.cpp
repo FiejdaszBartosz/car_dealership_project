@@ -320,6 +320,7 @@ void NewSportVehicleForm::on_addToRegisterButton_2_clicked() {
     ui->nameLineEdit_2->clear();
     ui->productionYearLineEdit_2->clear();
     ui->vehicleLenghtLineEdit_2->clear();
+    apTempSportVehicle = new SportVehicle;
   }
 }
 

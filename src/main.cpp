@@ -1,3 +1,4 @@
+#include "../include/LogIn.h"
 #include "../include/mainwindow.h"
 #include "../include/NewHatchbackForm.h"
 #include "../include/Vehicle.h"
@@ -5,7 +6,7 @@
 #include "../include/Limousine.h"
 #include "../include/SportVehicle.h"
 #include "../include/VehicleManager.h"
-
+#include <string.h>
 #include <QApplication>
 
 int main(int argc, char *argv[]) {   
@@ -13,10 +14,29 @@ int main(int argc, char *argv[]) {
 
 #ifdef QT
   QApplication a(argc, argv);
-  MainWindow w;
-  w.show();
+  MainWindow newMainWindow;
+  LogIn newLogInWindow;
+  bool checkStart = false;
+  if(argc == 2){
+      if(!strcmp(argv[1], "admin")) {
+          Account tempAccount;
+          checkStart = true;
+          tempAccount.setAdmin();
+          newMainWindow.setUser(&tempAccount);
+          newMainWindow.show();
+      } else if (!strcmp(argv[1], "user")) {
+          Account tempAccount;
+          checkStart = true;
+          tempAccount.setNormalUser();
+          newMainWindow.setUser(&tempAccount);
+          newMainWindow.show();
+      }
+  }
+  if(!checkStart)
+    newLogInWindow.show();
+
   return a.exec();
-#endif //notTest
+#endif //QT
 
 #ifdef test
   std::vector<engineProperties> newEngine;

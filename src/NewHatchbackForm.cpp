@@ -13,7 +13,6 @@ NewHatchbackForm::NewHatchbackForm(QWidget *parent) :
 
 NewHatchbackForm::~NewHatchbackForm() {
   delete ui;
-  //delete apTempHatchback;
 }
 
 void NewHatchbackForm::setManager(VehicleManager *pVehicleManager) {
@@ -263,6 +262,7 @@ void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
     ui->nameLineEdit_2->clear();
     ui->productionYearLineEdit_2->clear();
     ui->vehicleLenghtLineEdit_2->clear();
+    apTempHatchback = new Hatchback;
   }
 }
 
