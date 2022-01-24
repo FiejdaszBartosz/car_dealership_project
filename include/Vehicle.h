@@ -132,6 +132,12 @@ class Vehicle {
 										   const int &rNewAccessoriesPrice);
   virtual void saveToFile(const std::string fileName) const = 0;
   virtual std::string showInformation() const = 0;
+  virtual std::string showPackage(int position) const = 0;
+  virtual std::vector<engineProperties> getEnginePackage() const = 0;
+  virtual void setEnginePackage(const std::vector<engineProperties> &rEnginePackageVector) = 0;
+  virtual void setEnginePackage(const engineProperties &rEnginePackageStruct) = 0;
+  virtual bool getIsPackageAdded() = 0;
+  virtual void setIsPackageAdded() = 0;
 };
 
 #endif // VEHICLE_H

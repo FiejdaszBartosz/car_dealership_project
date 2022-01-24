@@ -1,43 +1,77 @@
 #include "../include/VehicleManager.h"
 
-VehicleManager::VehicleManager() {
+/**
+  * @brief constructor
+*/
+VehicleManager::VehicleManager() {}
 
-}
+/**
+  * @brief destructor
+  */
+VehicleManager::~VehicleManager() {}
 
-VehicleManager::~VehicleManager() {
-
-}
-
+/**
+  * @returns vehicle register
+  */
 std::vector<Vehicle *> VehicleManager::getVehicleRegister() const {
   return aVehicleRegister;
 }
 
+/**
+  * @returns vehicle register length
+  */
 int VehicleManager::getRegisterLenght() const {
   return aVehicleRegister.size();
 }
 
+/**
+  * @brief sets vehicle register
+  * @param vehicleRegister input register
+  */
 void VehicleManager::setVehicleRegister(const std::vector<Vehicle *> vehicleRegister) {
   this->aVehicleRegister = vehicleRegister;
 }
 
+/**
+  * @brief adds hatchback object to register
+  * @param pHatchback input hatchback
+  */
 void VehicleManager::addElemnt(Hatchback *pHatchback) {
   aVehicleRegister.push_back(pHatchback);
 }
 
+/**
+  * @brief adds limousine object to register
+  * @param pHatchback input limousine
+  */
 void VehicleManager::addElemnt(Limousine *pLimousine) {
   aVehicleRegister.push_back(pLimousine);
 }
 
+/**
+  * @brief adds sport vehicle object to register
+  * @param pSportVehicle input sport vehicle
+  */
 void VehicleManager::addElemnt(SportVehicle *pSportVehicle) {
   aVehicleRegister.push_back(pSportVehicle);
 }
 
+/**
+  * @brief removes element from register
+  * @param position element position to be deleted
+  */
 void VehicleManager::removeElemnt(const int position) {
   auto temp = getVehicleRegister();
   temp.erase(temp.begin() + position);
   setVehicleRegister(temp);
 }
 
+/**
+  * @brief checks type of vehicle in file
+  * @param rType - vehicle type
+  * @param rTypeNumber
+  * @param rAttributesNumber - number of attributes to be loaded
+  */
 bool VehicleManager::checkType(std::string &rType, int &rTypeNumber, int &rAttributesNumber) const {
   if (rType == "hatchback") {
 	rAttributesNumber = 6;
@@ -55,12 +89,20 @@ bool VehicleManager::checkType(std::string &rType, int &rTypeNumber, int &rAttri
 	return false;
 }
 
+/**
+  * @brief saves vehicles to file
+  * @param fileName - file location
+  */
 void VehicleManager::saveAllVehicle(const std::string fileName) {
   for (std::vector<Vehicle *>::iterator iter = aVehicleRegister.begin(); iter != aVehicleRegister.end(); ++iter) {
 	(*iter)->saveToFile(fileName);
   }
 }
 
+/**
+  * @brief loads vehicles from file
+  * @param fileName - file location
+  */
 void VehicleManager::loadAllVehicle(const std::string fileName) {
   bool checkTypeFlag = false;
   std::fstream input;
@@ -351,3 +393,5 @@ void VehicleManager::loadAllVehicle(const std::string fileName) {
 	delete pTempSportVehicle;
   input.close();
 }
+
+

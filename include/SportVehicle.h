@@ -6,6 +6,7 @@
 class SportVehicle : public Vehicle {
  protected:
   std::vector<engineProperties> aEnginePackage;
+  bool aIsPackageAdded;
  public:
   SportVehicle();
   SportVehicle(std::string &rName,
@@ -36,6 +37,9 @@ class SportVehicle : public Vehicle {
   void upgradeEngine(int position);
   void saveToFile(const std::string fileName) const;
   std::string showInformation() const;
+  std::string showPackage(int position) const;
+  bool getIsPackageAdded();
+  void setIsPackageAdded();
 };
 
 #endif // SPORTVEHICLE_H

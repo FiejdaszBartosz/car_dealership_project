@@ -1,6 +1,10 @@
 #include "NewSportVehicleForm.h"
 #include "ui_NewSportVehicleForm.h"
 
+/**
+  * @brief constructor - creates ui, sets default attributes value, sets combo box
+  * @param parent - ui parent
+*/
 NewSportVehicleForm::NewSportVehicleForm(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NewSportVehicleForm) {
@@ -14,14 +18,24 @@ NewSportVehicleForm::NewSportVehicleForm(QWidget *parent) :
   ui->fuelTypeComboBox_3->addItem("electric");
 }
 
+/**
+  * @brief destructor - delete ui
+*/
 NewSportVehicleForm::~NewSportVehicleForm() {
   delete ui;
 }
 
+/**
+  * @brief sets local vehicle manager
+  * @param pVehicleManager - pointer to main manager
+*/
 void NewSportVehicleForm::setManager(VehicleManager *pVehicleManager) {
   this->apVehicleManager = pVehicleManager;
 }
 
+/**
+  * @brief sets "isValues" parameters that check the status whether this value has already been added
+*/
 void NewSportVehicleForm::setAllIs() {
   aIsEngine = false;
   aIsColor = false;
@@ -31,6 +45,9 @@ void NewSportVehicleForm::setAllIs() {
   aIsUpgrade = false;
 }
 
+/**
+  * @brief adds new sport vehicle after input all parameters
+*/
 void NewSportVehicleForm::on_addToRegisterButton_2_clicked() {
   int tempInt = 0, tempInt1 = 0, tempInt2 = 0;
   QString tempQString;
@@ -301,7 +318,7 @@ void NewSportVehicleForm::on_addToRegisterButton_2_clicked() {
   }
 
   if (checkInput == true) {
-    apVehicleManager->addElemnt(apTempSportVehicle);
+	apVehicleManager->addElemnt<SportVehicle *>(apTempSportVehicle);
 	setAllIs();
 	ui->hpLineEdit_2->clear();
 	ui->nmLineEdit_4->clear();
@@ -315,15 +332,18 @@ void NewSportVehicleForm::on_addToRegisterButton_2_clicked() {
 	ui->hpLineEdit_3->clear();
 	ui->nmLineEdit_5->clear();
 	ui->priceLineEdit_3->clear();
-    ui->interioTrimLineEdit_2->clear();
-    ui->interiorPriceLineEdit_2->clear();
-    ui->nameLineEdit_2->clear();
-    ui->productionYearLineEdit_2->clear();
-    ui->vehicleLenghtLineEdit_2->clear();
-    apTempSportVehicle = new SportVehicle;
+	ui->interioTrimLineEdit_2->clear();
+	ui->interiorPriceLineEdit_2->clear();
+	ui->nameLineEdit_2->clear();
+	ui->productionYearLineEdit_2->clear();
+	ui->vehicleLenghtLineEdit_2->clear();
+	apTempSportVehicle = new SportVehicle;
   }
 }
 
+/**
+  * @brief adds engine to vector
+*/
 void NewSportVehicleForm::on_addEngineButton_2_clicked() {
   int tempInt = 0, tempInt1 = 0, tempInt2 = 0;
   QString tempQString;
@@ -380,6 +400,9 @@ void NewSportVehicleForm::on_addEngineButton_2_clicked() {
   aIsEngine = true;
 }
 
+/**
+  * @brief adds color to vector
+*/
 void NewSportVehicleForm::on_addColorButton_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -416,6 +439,9 @@ void NewSportVehicleForm::on_addColorButton_2_clicked() {
   aIsColor = true;
 }
 
+/**
+  * @brief adds interior to vector
+*/
 void NewSportVehicleForm::on_addInteriorButton_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -452,6 +478,9 @@ void NewSportVehicleForm::on_addInteriorButton_2_clicked() {
   aIsInterior = true;
 }
 
+/**
+  * @brief adds wheels to vector
+*/
 void NewSportVehicleForm::on_addWheelsButton_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -488,6 +517,9 @@ void NewSportVehicleForm::on_addWheelsButton_2_clicked() {
   aIsWheels = true;
 }
 
+/**
+  * @brief adds additional equipment to vector
+*/
 void NewSportVehicleForm::on_addAdditionalEquipment_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -524,6 +556,9 @@ void NewSportVehicleForm::on_addAdditionalEquipment_2_clicked() {
   aIsEquipment = true;
 }
 
+/**
+  * @brief adds engine package to vector
+*/
 void NewSportVehicleForm::on_addEngineButton_3_clicked() {
   int tempInt = 0, tempInt1 = 0, tempInt2 = 0;
   QString tempQString;

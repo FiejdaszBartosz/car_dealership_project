@@ -1,23 +1,24 @@
 #include "SportVehicle.h"
 
-/*
-  @brief constructor - create Hatchback with default value
+/**
+  * @brief constructor - create Hatchback with default value
 */
 SportVehicle::SportVehicle() {
   aName = "not set";
   aType = "sportVehicle";
   aProductionYear = 0;
+  aIsPackageAdded = false;
 }
 
-/*
-  @brief constructor - create SportVehicle with given values
-  @param rName - sport vehicle name - reference
-  @param rProductionYear - production year - reference
-  @param rEngine - vector of engine struct - reference
-  @param rInterior - vector of accessories for interior - reference
-  @param rColor - vector of accessories for color - reference
-  @param rWheels - vector of accessories for wheels - reference
-  @param rAdditionalEquipment - vector of accessories for additional equipment - reference
+/**
+  * @brief constructor - create SportVehicle with given values
+  * @param rName - sport vehicle name - reference
+  * @param rProductionYear - production year - reference
+  * @param rEngine - vector of engine struct - reference
+  * @param rInterior - vector of accessories for interior - reference
+  * @param rColor - vector of accessories for color - reference
+  * @param rWheels - vector of accessories for wheels - reference
+  * @param rAdditionalEquipment - vector of accessories for additional equipment - reference
 */
 SportVehicle::SportVehicle(std::string &rName,
 						   int &rProductionYear,
@@ -38,8 +39,12 @@ SportVehicle::SportVehicle(std::string &rName,
   aWheels = rWheels;
   aAdditionalEquipment = rAdditionalEquipment;
   aEnginePackage = rEnginePackage;
+  aIsPackageAdded = false;
 }
 
+/**
+  * @brief destructor
+*/
 SportVehicle::~SportVehicle() {
 
 }
@@ -51,28 +56,28 @@ std::vector<engineProperties> SportVehicle::getEnginePackage() const {
   return aEnginePackage;
 }
 
-/*
-  @brief set vector of engine properties
-  @param rEnginePackageVector - vector of engine properties to be set - reference
+/**
+  * @brief set vector of engine properties
+  * @param rEnginePackageVector - vector of engine properties to be set - reference
 */
 void SportVehicle::setEnginePackage(const std::vector<engineProperties> &rEnginePackageVector) {
   this->aEnginePackage = rEnginePackageVector;
 }
 
-/*
-  @brief set vector of engine properties
-  @param rEnginePackageStruct - engine package struct to be pushed back - reference
+/**
+  * @brief set vector of engine properties
+  * @param rEnginePackageStruct - engine package struct to be pushed back - reference
 */
 void SportVehicle::setEnginePackage(const engineProperties &rEnginePackageStruct) {
   this->aEnginePackage.push_back(rEnginePackageStruct);
 }
 
-/*
-  @brief creates an engine struct from given parameters and push it back
-  @param rHp - amount of horsepower - reference
-  @param rNm - amount of Newton meters - reference
-  @param rFuelType - type of fuel - reference
-  @param rEnginePrice - engine price - reference
+/**
+  * @brief creates an engine struct from given parameters and push it back
+  * @param rHp - amount of horsepower - reference
+  * @param rNm - amount of Newton meters - reference
+  * @param rFuelType - type of fuel - reference
+  * @param rEnginePrice - engine price - reference
 */
 void SportVehicle::addEnginePackage(const int &rHp,
 									const int &rNm,
@@ -83,12 +88,12 @@ void SportVehicle::addEnginePackage(const int &rHp,
   setEnginePackage(temp);
 }
 
-/*
-  @brief deletes an engine struct with given parameters form vector
-  @param rHp - amount of horsepower - reference
-  @param rNm - amount of Newton meters - reference
-  @param rFuelType - type of fuel - reference
-  @param rEnginePrice - engine price - reference
+/**
+  * @brief deletes an engine struct with given parameters form vector
+  * @param rHp - amount of horsepower - reference
+  * @param rNm - amount of Newton meters - reference
+  * @param rFuelType - type of fuel - reference
+  * @param rEnginePrice - engine price - reference
 */
 void SportVehicle::removeEnginePackage(const int &rHp,
 									   const int &rNm,
@@ -108,12 +113,12 @@ void SportVehicle::removeEnginePackage(const int &rHp,
   setEnginePackage(temp);
 }
 
-/*
-  @brief change a engine struct parameters
-  @param rHp - amount of horsepower - reference
-  @param rNm - amount of Newton meters - reference
-  @param rFuelType - type of fuel - reference
-  @param rEnginePrice - engine price - reference
+/**
+  * @brief changes an engine struct parameters
+  * @param rHp - amount of horsepower - reference
+  * @param rNm - amount of Newton meters - reference
+  * @param rFuelType - type of fuel - reference
+  * @param rEnginePrice - engine price - reference
 */
 void SportVehicle::changeEnginePackageProperties(const int &rHp,
 												 const int &rNm,
@@ -136,9 +141,9 @@ void SportVehicle::changeEnginePackageProperties(const int &rHp,
   setEnginePackage(temp);
 }
 
-/*
-  @brief upgrade engine based on the engine package
-  @param position - position in engine package vector
+/**
+  * @brief upgrade engine based on the engine package
+  * @param position - position in engine package vector
 */
 void SportVehicle::upgradeEngine(int position) {
   std::vector<engineProperties> temp = getEngine();
@@ -148,6 +153,10 @@ void SportVehicle::upgradeEngine(int position) {
   setEngine(temp);
 }
 
+/**
+  * @brief virtual function for saving to file
+  * @param fileName - name of the file where you want to save
+*/
 void SportVehicle::saveToFile(const std::string fileName) const {
   std::ofstream output;
   output.open(fileName, std::ios::app);
@@ -191,7 +200,10 @@ void SportVehicle::saveToFile(const std::string fileName) const {
   output.close();
 }
 
-std::string SportVehicle::showInformation() const{
+/**
+  * @brief function that creates information about hatchback and saves that to string
+*/
+std::string SportVehicle::showInformation() const {
   std::string information;
   information = "Name: " + getName() + "\n";
   information = information + "Typ: " + getType() + "\n";
@@ -199,42 +211,66 @@ std::string SportVehicle::showInformation() const{
   information = information + "Production Year: " + std::to_string(getProductionYear()) + "\n";
 
   auto tempEngine = getEngine();
-  for(auto i = tempEngine.begin(); i != tempEngine.end(); i++){
-    information = information + "HP: " + std::to_string(i->hp) + " Nm: " + std::to_string(i->hp)
-            + " Petrol: " + i->fuelType + " Price: " + std::to_string(i->enginePrice) + "\n";
+  for (auto i = tempEngine.begin(); i != tempEngine.end(); i++) {
+	information = information + "HP: " + std::to_string(i->hp) + " Nm: " + std::to_string(i->hp)
+		+ " Petrol: " + i->fuelType + " Price: " + std::to_string(i->enginePrice) + "\n";
   }
 
   auto tempInterior = getInterior();
-  for(auto i = tempInterior.begin(); i != tempInterior.end(); i++){
-    information = information + "Interior trim: " + i->accessoriesName + " Price: "
-            + std::to_string(i->accessoriesPrice) + "\n";
+  for (auto i = tempInterior.begin(); i != tempInterior.end(); i++) {
+	information = information + "Interior trim: " + i->accessoriesName + " Price: "
+		+ std::to_string(i->accessoriesPrice) + "\n";
   }
 
   auto tempColor = getColor();
-  for(auto i = tempColor.begin(); i != tempColor.end(); i++){
-    information = information + "Color: " + i->accessoriesName + " Price: "
-            + std::to_string(i->accessoriesPrice) + "\n";
+  for (auto i = tempColor.begin(); i != tempColor.end(); i++) {
+	information = information + "Color: " + i->accessoriesName + " Price: "
+		+ std::to_string(i->accessoriesPrice) + "\n";
   }
 
   auto tempWheels = getWheels();
-  for(auto i = tempWheels.begin(); i != tempWheels.end(); i++){
-    information = information + "Wheels size: " + i->accessoriesName + " Price: "
-            + std::to_string(i->accessoriesPrice) + "\n";
+  for (auto i = tempWheels.begin(); i != tempWheels.end(); i++) {
+	information = information + "Wheels size: " + i->accessoriesName + " Price: "
+		+ std::to_string(i->accessoriesPrice) + "\n";
   }
 
   information += "Additional Equipment:\n";
   auto tempAdditionalEquipment = getAdditionalEquipment();
-  for(auto i = tempAdditionalEquipment.begin(); i != tempAdditionalEquipment.end(); i++){
-    information = information + i->accessoriesName + " Price: "
-            + std::to_string(i->accessoriesPrice) + "\n";
+  for (auto i = tempAdditionalEquipment.begin(); i != tempAdditionalEquipment.end(); i++) {
+	information = information + i->accessoriesName + " Price: "
+		+ std::to_string(i->accessoriesPrice) + "\n";
   }
 
   information += "Engine Package:\n";
   auto tempPackage = getEnginePackage();
-  for(auto i = tempPackage.begin(); i != tempPackage.end(); i++){
-    information = information + "HP: " + std::to_string(i->hp) + " Nm: " + std::to_string(i->hp)
-            + " Petrol: " + i->fuelType + " Price: " + std::to_string(i->enginePrice) + "\n";
+  for (auto i = tempPackage.begin(); i != tempPackage.end(); i++) {
+	information = information + "HP: " + std::to_string(i->hp) + " Nm: " + std::to_string(i->hp)
+		+ " Petrol: " + i->fuelType + " Price: " + std::to_string(i->enginePrice) + "\n";
   }
 
   return information;
+}
+
+/**
+ * @brief based on virtual function, shows package details
+ * @param position - package position
+ * @returns sport vehicle
+ */
+std::string SportVehicle::showPackage(int position) const {
+  return "sport vehicle";
+}
+
+/**
+ * @brief based on virtual function, gets information if the package was added
+ * @returns whether the package has been added
+ */
+bool SportVehicle::getIsPackageAdded() {
+  return aIsPackageAdded;
+}
+
+/**
+ * @brief based on virtual function, sets that the package has been added
+ */
+void SportVehicle::setIsPackageAdded() {
+  aIsPackageAdded = true;
 }

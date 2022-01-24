@@ -1,7 +1,7 @@
 #include "Limousine.h"
 
-/*
-  @brief constructor - create Limousine with default value
+/**
+  * @brief constructor - create Limousine with default value
 */
 Limousine::Limousine() {
   aName = "not set";
@@ -11,15 +11,15 @@ Limousine::Limousine() {
 
 }
 
-/*
-  @brief constructor - create Limousine with given values
-  @param rName - limousine name - reference
-  @param rProductionYear - production year - reference
-  @param rEngine - vector of engine struct - reference
-  @param rInterior - vector of accessories for interior - reference
-  @param rColor - vector of accessories for color - reference
-  @param rWheels - vector of accessories for wheels - reference
-  @param rAdditionalEquipment - vector of accessories for additional equipment - reference
+/**
+  * @brief constructor - create Limousine with given values
+  * @param rName - limousine name - reference
+  * @param rProductionYear - production year - reference
+  * @param rEngine - vector of engine struct - reference
+  * @param rInterior - vector of accessories for interior - reference
+  * @param rColor - vector of accessories for color - reference
+  * @param rWheels - vector of accessories for wheels - reference
+  * @param rAdditionalEquipment - vector of accessories for additional equipment - reference
 */
 Limousine::Limousine(std::string &rName,
 					 int &rProductionYear,
@@ -41,10 +41,13 @@ Limousine::Limousine(std::string &rName,
   aIsLong = false;
 }
 
+/**
+  * @brief destructor
+  */
 Limousine::~Limousine() {}
 
-/*
-  @brief set type long limousine
+/**
+  * @brief set type long limousine
 */
 void Limousine::addLongVersion() {
   aIsLong = true;
@@ -52,9 +55,9 @@ void Limousine::addLongVersion() {
   addVehicleLength(20);
 }
 
-/*
-  @brief virtual function for saving to file
-  @param fileName - name of the file where you want to save
+/**
+  * @brief virtual function for saving to file
+  * @param fileName - name of the file where you want to save
 */
 void Limousine::saveToFile(const std::string fileName) const {
   std::ofstream output(fileName, std::ios::app);
@@ -94,51 +97,93 @@ void Limousine::saveToFile(const std::string fileName) const {
   output.close();
 }
 
-/*
-  @brief function that creates information about limousine and saves that to string
+/**
+  * @brief function that creates information about limousine and saves that to string
+  * @returns created information
 */
-std::string Limousine::showInformation() const{
+std::string Limousine::showInformation() const {
   std::string information;
   information = "Name: " + getName() + "\n";
   information = information + "Typ: " + getType() + "\n";
   information = information + "Length: " + std::to_string(getVehicleLength()) + "\n";
   information = information + "Production Year: " + std::to_string(getProductionYear()) + "\n";
   information += "Is Long: ";
-  if(aIsLong == true)
-      information += "True\n";
+  if (aIsLong == true)
+	information += "True\n";
   else
-      information += "False\n";
+	information += "False\n";
 
   auto tempEngine = getEngine();
-  for(auto i = tempEngine.begin(); i != tempEngine.end(); i++){
-    information = information + "HP: " + std::to_string(i->hp) + " Nm: " + std::to_string(i->hp)
-            + " Petrol: " + i->fuelType + " Price: " + std::to_string(i->enginePrice) + "\n";
+  for (auto i = tempEngine.begin(); i != tempEngine.end(); i++) {
+	information = information + "HP: " + std::to_string(i->hp) + " Nm: " + std::to_string(i->hp)
+		+ " Petrol: " + i->fuelType + " Price: " + std::to_string(i->enginePrice) + "\n";
   }
 
   auto tempInterior = getInterior();
-  for(auto i = tempInterior.begin(); i != tempInterior.end(); i++){
-    information = information + "Interior trim: " + i->accessoriesName + " Price: "
-            + std::to_string(i->accessoriesPrice) + "\n";
+  for (auto i = tempInterior.begin(); i != tempInterior.end(); i++) {
+	information = information + "Interior trim: " + i->accessoriesName + " Price: "
+		+ std::to_string(i->accessoriesPrice) + "\n";
   }
 
   auto tempColor = getColor();
-  for(auto i = tempColor.begin(); i != tempColor.end(); i++){
-    information = information + "Color: " + i->accessoriesName + " Price: "
-            + std::to_string(i->accessoriesPrice) + "\n";
+  for (auto i = tempColor.begin(); i != tempColor.end(); i++) {
+	information = information + "Color: " + i->accessoriesName + " Price: "
+		+ std::to_string(i->accessoriesPrice) + "\n";
   }
 
   auto tempWheels = getWheels();
-  for(auto i = tempWheels.begin(); i != tempWheels.end(); i++){
-    information = information + "Wheels size: " + i->accessoriesName + " Price: "
-            + std::to_string(i->accessoriesPrice) + "\n";
+  for (auto i = tempWheels.begin(); i != tempWheels.end(); i++) {
+	information = information + "Wheels size: " + i->accessoriesName + " Price: "
+		+ std::to_string(i->accessoriesPrice) + "\n";
   }
 
   information += "Additional Equipment:\n";
   auto tempAdditionalEquipment = getAdditionalEquipment();
-  for(auto i = tempAdditionalEquipment.begin(); i != tempAdditionalEquipment.end(); i++){
-    information = information + i->accessoriesName + " Price: "
-            + std::to_string(i->accessoriesPrice) + "\n";
+  for (auto i = tempAdditionalEquipment.begin(); i != tempAdditionalEquipment.end(); i++) {
+	information = information + i->accessoriesName + " Price: "
+		+ std::to_string(i->accessoriesPrice) + "\n";
   }
 
   return information;
 }
+
+/**
+ * @brief based on virtual function, shows package details
+ * @param position - package position
+ * @returns error in limousine case
+ */
+std::string Limousine::showPackage(int position) const {
+  return "error";
+}
+
+/**
+ * @brief based on virtual function, gets vector of engine properties
+ * @returns in limousine case empty engine properties vector
+ */
+std::vector<engineProperties> Limousine::getEnginePackage() const {
+  std::vector<engineProperties> temp;
+  return temp;
+}
+
+/**
+ * @brief based on virtual function, doing nothing in limousine case
+ */
+void Limousine::setEnginePackage(const std::vector<engineProperties> &rEnginePackageVector) {}
+
+/**
+ * @brief based on virtual function, doing nothing in hatchback case
+ */
+void Limousine::setEnginePackage(const engineProperties &rEnginePackageStruct) {}
+
+/**
+ * @brief based on virtual function, gets information if the package was added
+ * @returns false in limousine case
+ */
+bool Limousine::getIsPackageAdded() {
+  return false;
+}
+
+/**
+ * @brief based on virtual function, doing nothing in limousine case
+ */
+void Limousine::setIsPackageAdded() {}

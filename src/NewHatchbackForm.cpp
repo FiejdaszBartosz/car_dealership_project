@@ -1,6 +1,10 @@
 #include "NewHatchbackForm.h"
 #include "ui_NewHatchbackForm.h"
 
+/**
+  * @brief constructor - creates ui, sets default attributes value, sets combo box
+  * @param parent - ui parent
+*/
 NewHatchbackForm::NewHatchbackForm(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NewHatchbackForm) {
@@ -11,14 +15,24 @@ NewHatchbackForm::NewHatchbackForm(QWidget *parent) :
   ui->fuelTypeComboBox_2->addItem("electric");
 }
 
+/**
+  * @brief destructor - delete ui
+*/
 NewHatchbackForm::~NewHatchbackForm() {
   delete ui;
 }
 
+/**
+  * @brief sets local vehicle manager
+  * @param pVehicleManager - pointer to main manager
+*/
 void NewHatchbackForm::setManager(VehicleManager *pVehicleManager) {
   this->apVehicleManager = pVehicleManager;
 }
 
+/**
+  * @brief sets "isValues" parameters that check the status whether this value has already been added
+*/
 void NewHatchbackForm::setAllIs() {
   aIsEngine = false;
   aIsColor = false;
@@ -27,6 +41,9 @@ void NewHatchbackForm::setAllIs() {
   aIsEquipment = false;
 }
 
+/**
+  * @brief adds new hatchback after input all parameters
+*/
 void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
   int tempInt = 0, tempInt1 = 0, tempInt2 = 0;
   QString tempQString;
@@ -62,7 +79,7 @@ void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
 	std::cerr << exc.what();
 	QMessageBox::warning(this, "warning", "Incorect year value");
   }
-  apTempHatchback->setProductionYear(tempInt);                                        //lenght reading
+  apTempHatchback->setProductionYear(tempInt);                                        //length reading
 
   tempQString = ui->vehicleLenghtLineEdit_2->text();
   try {
@@ -192,7 +209,7 @@ void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
 	checkInput = false;
 	std::cerr << "During interior trim reading\n";
 	std::cerr << exc.what();
-	QMessageBox::warning(this, "warning", "Incorect interior trim size");
+	QMessageBox::warning(this, "warning", "Incorrect interior trim size");
   }
 
   tempQString = ui->interiorPriceLineEdit_2->text();
@@ -202,7 +219,7 @@ void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
 	checkInput = false;
 	std::cerr << "During interior trim price reading\n";
 	std::cerr << exc.what();
-	QMessageBox::warning(this, "warning", "Incorect interior trim price value");
+	QMessageBox::warning(this, "warning", "Incorrect interior trim price value");
   }
 
   setIntersection = (add && add1);
@@ -222,7 +239,7 @@ void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
 	checkInput = false;
 	std::cerr << "During additional equipment reading\n";
 	std::cerr << exc.what();
-	QMessageBox::warning(this, "warning", "Incorect additional equipment name");
+	QMessageBox::warning(this, "warning", "Incorrect additional equipment name");
   }
 
   tempQString = ui->equipmentPriceLineEdit_2->text();
@@ -232,7 +249,7 @@ void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
 	checkInput = false;
 	std::cerr << "During additional equipment price reading\n";
 	std::cerr << exc.what();
-	QMessageBox::warning(this, "warning", "Incorect additional equipment price value");
+	QMessageBox::warning(this, "warning", "Incorrect additional equipment price value");
   }
 
   setIntersection = (add && add1);
@@ -246,7 +263,8 @@ void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
   }
 
   if (checkInput == true) {
-    apVehicleManager->addElemnt(apTempHatchback);
+    //apVehicleManager->addElemnt(apTempHatchback);
+    apVehicleManager->addElemnt<Hatchback *>(apTempHatchback);
 	setAllIs();
 	ui->hpLineEdit_2->clear();
 	ui->nmLineEdit_4->clear();
@@ -266,6 +284,9 @@ void NewHatchbackForm::on_addToRegisterButton_2_clicked() {
   }
 }
 
+/**
+  * @brief adds engine to vector
+*/
 void NewHatchbackForm::on_addEngineButton_2_clicked() {
   int tempInt = 0, tempInt1 = 0, tempInt2 = 0;
   QString tempQString;
@@ -322,6 +343,9 @@ void NewHatchbackForm::on_addEngineButton_2_clicked() {
   aIsEngine = true;
 }
 
+/**
+  * @brief adds color to vector
+*/
 void NewHatchbackForm::on_addColorButton_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -358,6 +382,9 @@ void NewHatchbackForm::on_addColorButton_2_clicked() {
   aIsColor = true;
 }
 
+/**
+  * @brief adds wheels to vector
+*/
 void NewHatchbackForm::on_addWheelsButton_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -394,6 +421,9 @@ void NewHatchbackForm::on_addWheelsButton_2_clicked() {
   aIsWheels = true;
 }
 
+/**
+  * @brief adds interior to vector
+*/
 void NewHatchbackForm::on_addInteriorButton_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -430,6 +460,9 @@ void NewHatchbackForm::on_addInteriorButton_2_clicked() {
   aIsInterior = true;
 }
 
+/**
+  * @brief adds additional equipment to vector
+*/
 void NewHatchbackForm::on_addAdditionalEquipment_2_clicked() {
   int tempInt = 0;
   QString tempQString;

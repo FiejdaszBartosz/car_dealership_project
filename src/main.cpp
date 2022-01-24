@@ -1,11 +1,4 @@
 #include "../include/LogIn.h"
-#include "../include/mainwindow.h"
-#include "../include/NewHatchbackForm.h"
-#include "../include/Vehicle.h"
-#include "../include/Hatchback.h"
-#include "../include/Limousine.h"
-#include "../include/SportVehicle.h"
-#include "../include/VehicleManager.h"
 #include <string.h>
 #include <QApplication>
 
@@ -16,17 +9,16 @@ int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
   MainWindow newMainWindow;
   LogIn newLogInWindow;
-
+  Account tempAccount;
   bool checkStart = false;
+
   if(argc == 2){
-      if(!strcmp(argv[1], "admin")) {
-          Account tempAccount;
+      if(!strcmp(argv[1], "admin")) {          
           checkStart = true;
           tempAccount.setAdmin();
           newMainWindow.setUser(&tempAccount);
           newMainWindow.show();
       } else if (!strcmp(argv[1], "user")) {
-          Account tempAccount;
           checkStart = true;
           tempAccount.setNormalUser();
           newMainWindow.setUser(&tempAccount);

@@ -6,9 +6,11 @@
 #include <QMessageBox>
 #include "Account.h"
 #include "VehicleManager.h"
+#include "Vehicle.h"
 #include "NewHatchbackForm.h"
 #include "NewLimousineForm.h"
 #include "NewSportVehicleForm.h"
+#include "AddPackageForm.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,8 +32,6 @@ class MainWindow : public QMainWindow {
  private slots:
   void on_addButton_clicked();
 
-  void on_changeButton_clicked();
-
   void on_deleteButton_clicked();
 
   void on_showDetails_clicked();
@@ -48,12 +48,15 @@ class MainWindow : public QMainWindow {
 
   void on_actionReload_triggered();
 
- private:
+  void on_addPackageButton_clicked();
+
+private:
   Ui::MainWindow *ui;
   NewHatchbackForm newHatchbackForm;
   NewLimousineForm newLimousineForm;
   NewSportVehicleForm newSportVehicleForm;
   VehicleManager aVehicleMenager;
+  AddPackageForm newAddPackageForm;
   QString aDefaultDatabse = "D:\build-jipp_project-Desktop_Qt_6_2_2_MinGW_64_bit-Debug";
 };
 #endif // MAINWINDOW_H

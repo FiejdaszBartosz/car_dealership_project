@@ -1,5 +1,10 @@
 #include "../include/lineEditFunctions.h"
 
+/**
+ * @brief converts QString to string with validation to empty input
+ * @param rInput in QString
+ * @param rOutput in String - returning that by reference
+ */
 void convertToString(const QString &rInput, std::string &rOutput) {
 
   if (rInput == "") {
@@ -7,13 +12,20 @@ void convertToString(const QString &rInput, std::string &rOutput) {
 					  "Input is empty",
 					  "lineEditFunction.cpp",
 					  "convertToString",
-					  "5");
+					  "10");
   } else {
 	rOutput = rInput.toUtf8().constData();
   }
 
 }
 
+/**
+ * @brief converts QString to string with validation to empty input
+ * @param rInput in QString
+ * @param rOutput in String - returning that by reference
+ * @param rFlag - whether it was previously added
+ * @param rAdd - confirms input
+ */
 void convertToString(const QString &rInput, std::string &rOutput, bool &rFlag, bool &rAdd) {
 
   if (rInput == "" && rFlag == false)
@@ -21,7 +33,7 @@ void convertToString(const QString &rInput, std::string &rOutput, bool &rFlag, b
 					  "Input is empty",
 					  "lineEditFunction.cpp",
 					  "convertToString",
-					  "18");
+					  "31");
   else {
 	rOutput = rInput.toUtf8().constData();
 	rAdd = true;
@@ -29,6 +41,11 @@ void convertToString(const QString &rInput, std::string &rOutput, bool &rFlag, b
 
 }
 
+/**
+ * @brief converts QString to int with validation to: empty input, unknown input type, double instead of int
+ * @param rInput in QString
+ * @param rOutput in int - returning that by reference
+ */
 void convertToInt(const QString &rInput, int &rOutput) {
   int tempInt = 0;
   double tempDouble = 0.0, tempIntPart = 0.0, tempFractPart = 0.0;
@@ -39,7 +56,7 @@ void convertToInt(const QString &rInput, int &rOutput) {
 					  "Input is empty",
 					  "lineEditFunction.cpp",
 					  "convertToInt",
-					  "39");
+					  "54");
   }
 
   tempDouble = rInput.toDouble(&ok);
@@ -52,15 +69,22 @@ void convertToInt(const QString &rInput, int &rOutput) {
 						"Input is double instead of int",
 						"lineEditFunction.cpp",
 						"convertToInt",
-						"50");
+						"65");
   } else
 	throw MyException("warning",
 					  "Unknown type of input",
 					  "lineEditFunction.cpp",
 					  "convertToInt",
-					  "48");
+					  "63");
 }
 
+/**
+ * @brief converts QString to int with validation to: empty input, unknown input type, double instead of int
+ * @param rInput in QString
+ * @param rOutput in int - returning that by reference
+ * @param rFlag - whether it was previously added
+ * @param rAdd - confirms input
+ */
 void convertToInt(const QString &rInput, int &rOutput, bool &rFlag, bool &rAdd) {
   int tempInt = 0;
   double tempDouble = 0.0, tempIntPart = 0.0, tempFractPart = 0.0;
@@ -71,7 +95,7 @@ void convertToInt(const QString &rInput, int &rOutput, bool &rFlag, bool &rAdd) 
 					  "Input is empty",
 					  "lineEditFunction.cpp",
 					  "convertToInt",
-					  "71");
+					  "93");
   }
   if (rInput != "") {
 	tempDouble = rInput.toDouble(&ok);
@@ -85,17 +109,21 @@ void convertToInt(const QString &rInput, int &rOutput, bool &rFlag, bool &rAdd) 
 						  "Input is double instead of int",
 						  "lineEditFunction.cpp",
 						  "convertToInt",
-						  "91");
+						  "104");
 	} else
 	  throw MyException("warning",
 						"Unknown type of input",
 						"lineEditFunction.cpp",
 						"convertToInt",
-						"89");
+						"102");
   }
 
 }
 
+/**
+  * @brief validates the input year
+  * @param rYear - given year, should be greater then 1885
+*/
 void validateYear(const int &rYear) {
   if (rYear < 1885)
 	throw MyException("warning",
@@ -105,6 +133,12 @@ void validateYear(const int &rYear) {
 					  "109");
 }
 
+/**
+ * @brief converts QString to string with validation to empty input
+ * @param rInput in QString
+ * @param rOutput in String - returning that by reference
+ * @param rFlag - whether it was previously added
+ */
 void convertToString(const QString &rInput, std::string &rOutput, bool &rFlag) {
 
   if (rInput == "" && rFlag == false)
@@ -112,12 +146,19 @@ void convertToString(const QString &rInput, std::string &rOutput, bool &rFlag) {
 					  "Input is empty",
 					  "lineEditFunction.cpp",
 					  "convertToString",
-					  "119");
+					  "144");
   else
 	rOutput = rInput.toUtf8().constData();
 
 }
 
+/**
+ * @brief converts QString to int with validation to: empty input, unknown input type, double instead of int
+ * @param rInput in QString
+ * @param rOutput in int - returning that by reference
+ * @param rFlag - whether it was previously added
+ * @param rAdd - confirms input
+ */
 void convertToInt(const QString &rInput, int &rOutput, bool &rFlag) {
   int tempInt = 0;
   double tempDouble = 0.0, tempIntPart = 0.0, tempFractPart = 0.0;
@@ -128,7 +169,7 @@ void convertToInt(const QString &rInput, int &rOutput, bool &rFlag) {
 					  "Input is empty",
 					  "lineEditFunction.cpp",
 					  "convertToInt",
-					  "135");
+					  "167");
   }
 
   tempDouble = rInput.toDouble(&ok);
@@ -141,11 +182,11 @@ void convertToInt(const QString &rInput, int &rOutput, bool &rFlag) {
 						"Input is double instead of int",
 						"lineEditFunction.cpp",
 						"convertToInt",
-						"146");
+						"178");
   } else
 	throw MyException("warning",
 					  "Unknown type of input",
 					  "lineEditFunction.cpp",
 					  "convertToInt",
-					  "143");
+					  "176");
 }

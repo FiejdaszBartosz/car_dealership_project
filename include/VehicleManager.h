@@ -25,6 +25,13 @@ class VehicleManager {
   bool checkType(std::string &rType, int &rTypeNumber, int &rAttributesNumber) const;
   void saveAllVehicle(const std::string fileName);
   void loadAllVehicle(const std::string fileName);
+
+  template<typename T>
+  void addElemnt(T vehicle){
+      aVehicleRegister.push_back(vehicle);
+  }
 };
+
+
 
 #endif // VEHICLEMANAGER_H

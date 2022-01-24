@@ -117,15 +117,9 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="changeButton">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+           <widget class="QPushButton" name="addPackageButton">
             <property name="text">
-             <string>Chanege Vehicle Properties</string>
+             <string>Add Engine Package</string>
             </property>
            </widget>
           </item>

@@ -1,6 +1,10 @@
 #include "NewLimousineForm.h"
 #include "ui_NewLimousineForm.h"
 
+/**
+  * @brief constructor - creates ui, sets default attributes value, sets combo box
+  * @param parent - ui parent
+*/
 NewLimousineForm::NewLimousineForm(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NewLimousineForm) {
@@ -12,15 +16,24 @@ NewLimousineForm::NewLimousineForm(QWidget *parent) :
   ui->fuelTypeComboBox_2->addItem("electric");
 }
 
+/**
+  * @brief destructor - delete ui
+*/
 NewLimousineForm::~NewLimousineForm() {
   delete ui;
-  //delete apTempLimousine;
 }
 
+/**
+  * @brief sets local vehicle manager
+  * @param pVehicleManager - pointer to main manager
+*/
 void NewLimousineForm::setManager(VehicleManager *pVehicleManager) {
   this->apVehicleManager = pVehicleManager;
 }
 
+/**
+  * @brief sets "isValues" parameters that check the status whether this value has already been added
+*/
 void NewLimousineForm::setAllIs() {
   aIsEngine = false;
   aIsColor = false;
@@ -30,6 +43,9 @@ void NewLimousineForm::setAllIs() {
   aIsLongClicked = false;
 }
 
+/**
+  * @brief adds engine to vector
+*/
 void NewLimousineForm::on_addEngineButton_2_clicked() {
   int tempInt = 0, tempInt1 = 0, tempInt2 = 0;
   QString tempQString;
@@ -86,6 +102,9 @@ void NewLimousineForm::on_addEngineButton_2_clicked() {
   aIsEngine = true;
 }
 
+/**
+  * @brief adds color to vector
+*/
 void NewLimousineForm::on_addColorButton_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -122,6 +141,9 @@ void NewLimousineForm::on_addColorButton_2_clicked() {
   aIsColor = true;
 }
 
+/**
+  * @brief adds interior to vector
+*/
 void NewLimousineForm::on_addInteriorButton_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -158,6 +180,9 @@ void NewLimousineForm::on_addInteriorButton_2_clicked() {
   aIsInterior = true;
 }
 
+/**
+  * @brief adds wheels to vector
+*/
 void NewLimousineForm::on_addWheelsButton_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -194,6 +219,9 @@ void NewLimousineForm::on_addWheelsButton_2_clicked() {
   aIsWheels = true;
 }
 
+/**
+  * @brief adds additional equipment to vector
+*/
 void NewLimousineForm::on_addAdditionalEquipment_2_clicked() {
   int tempInt = 0;
   QString tempQString;
@@ -230,6 +258,9 @@ void NewLimousineForm::on_addAdditionalEquipment_2_clicked() {
   aIsEquipment = true;
 }
 
+/**
+  * @brief adds new limousine after input all parameters
+*/
 void NewLimousineForm::on_addToRegisterButton_2_clicked() {
   int tempInt = 0, tempInt1 = 0, tempInt2 = 0;
   QString tempQString;
@@ -453,7 +484,7 @@ void NewLimousineForm::on_addToRegisterButton_2_clicked() {
 	apTempLimousine->addLongVersion();
 
   if (checkInput == true) {
-    apVehicleManager->addElemnt(apTempLimousine);
+    apVehicleManager->addElemnt<Limousine *>(apTempLimousine);
 	setAllIs();
 	ui->hpLineEdit_2->clear();
 	ui->nmLineEdit_4->clear();

@@ -1,7 +1,10 @@
 #include "LogIn.h"
 #include "ui_LogIn.h"
 
-
+/**
+  * @brief constructor - creates ui
+  * @param parent - ui parent
+*/
 LogIn::LogIn(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LogIn)
@@ -9,15 +12,24 @@ LogIn::LogIn(QWidget *parent) :
     ui->setupUi(this);
 }
 
+/**
+  * @brief destructor - delete ui
+*/
 LogIn::~LogIn()
 {
     delete ui;
 }
 
+/**
+  * @returns user Account object
+*/
 Account LogIn::getUser() {
     return aUser;
 }
 
+/**
+  * @brief checks username and password after clicking push button
+*/
 void LogIn::on_pushButton_clicked()
 {
     QString tempUsername, tempPassword;

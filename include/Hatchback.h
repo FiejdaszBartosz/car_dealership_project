@@ -17,6 +17,12 @@ class Hatchback : public Vehicle {
   ~Hatchback();
   void saveToFile(const std::string fileName) const;
   std::string showInformation() const;
+  std::string showPackage(int position) const;
+  std::vector<engineProperties> getEnginePackage() const;
+  void setEnginePackage(const std::vector<engineProperties> &rEnginePackageVector);
+  void setEnginePackage(const engineProperties &rEnginePackageStruct);
+  bool getIsPackageAdded();
+  void setIsPackageAdded();
 };
 
 #endif // HATCHBACK_H

@@ -2,7 +2,7 @@
 
 struct engineProperties &engineProperties::operator+=(const engineProperties &rhs) {
   hp += rhs.hp;
-  nm += rhs.hp;
+  nm += rhs.nm;
   return *this;
 }
 
