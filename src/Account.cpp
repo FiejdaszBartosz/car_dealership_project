@@ -1,6 +1,6 @@
 #include "Account.h"
 /*
-  Rights:
+  Rights index:
   0 - Add Hatchback
   1 - Add Limousine
   2 - Add Sport Vehicle
@@ -10,7 +10,10 @@
   6 - Load Database
   7 - Save to Database
 */
-Account::Account() {}
+Account::Account() {
+    apRights = nullptr;
+    aRightsNumber = 0;
+}
 
 Account::Account(unsigned int amount)
 {
@@ -23,14 +26,15 @@ Account::Account(unsigned int amount)
   aRightsNumber = amount;
   apRights = new bool [aRightsNumber];
   for(int i = 0; i < aRightsNumber; ++i)
-    apRights[i] = false;
+    apRights[i] = 0;
 }
 
 Account::~Account() {
-  delete [] apRights;
+  if(apRights != nullptr)
+    delete [] apRights;
 }
 
-bool Account::getAllRight() {
+bool* Account::getAllRight() {
     return apRights;
 }
 
@@ -60,7 +64,7 @@ void Account::setAdmin() {
     aRightsNumber = 8;
     apRights = new bool [aRightsNumber];
     for(int i = 0; i < aRightsNumber; ++i)
-      apRights[i] = true;
+      apRights[i] = 1;
     aUsername = "admin";
     aPassword = "admin";
 }
@@ -69,8 +73,8 @@ void Account::setNormalUser() {
     aRightsNumber = 8;
     apRights = new bool [aRightsNumber];
     for(int i = 0; i < aRightsNumber; ++i)
-      apRights[i] = true;
-    apRights[5] = false;
+      apRights[i] = 1;
+    apRights[5] = 0;
     aUsername = "user";
     aPassword = "user";
 }

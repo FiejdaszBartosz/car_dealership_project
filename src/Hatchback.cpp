@@ -1,11 +1,24 @@
 #include "../include/Hatchback.h"
 
+/*
+  @brief constructor - create Hatchback with default value
+*/
 Hatchback::Hatchback() {
   aName = "not set";
   aType = "hatchback";
   aProductionYear = 0;
 }
 
+/*
+  @brief constructor - create Hatchback with given values
+  @param rName - hatchback name - reference
+  @param rProductionYear - production year - reference
+  @param rEngine - vector of engine struct - reference
+  @param rInterior - vector of accessories for interior - reference
+  @param rColor - vector of accessories for color - reference
+  @param rWheels - vector of accessories for wheels - reference
+  @param rAdditionalEquipment - vector of accessories for additional equipment - reference
+*/
 Hatchback::Hatchback(std::string &rName,
 					 int &rProductionYear,
 					 int &rVehicleLength,
@@ -27,6 +40,10 @@ Hatchback::Hatchback(std::string &rName,
 
 Hatchback::~Hatchback() {}
 
+/*
+  @brief virtual function for saving to file
+  @param fileName - name of the file where you want to save
+*/
 void Hatchback::saveToFile(const std::string fileName) const {
   std::ofstream output(fileName, std::ios::app);
   output << aType << "," << aName << "," << aProductionYear << "," << aVehicleLength << "\n";
@@ -63,6 +80,9 @@ void Hatchback::saveToFile(const std::string fileName) const {
   output.close();
 }
 
+/*
+  @brief function that creates information about hatchback and saves that to string
+*/
 std::string Hatchback::showInformation() const{
   std::string information;
   information = "Name: " + getName() + "\n";

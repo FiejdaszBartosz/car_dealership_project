@@ -1,11 +1,24 @@
 #include "SportVehicle.h"
 
+/*
+  @brief constructor - create Hatchback with default value
+*/
 SportVehicle::SportVehicle() {
   aName = "not set";
   aType = "sportVehicle";
   aProductionYear = 0;
 }
 
+/*
+  @brief constructor - create SportVehicle with given values
+  @param rName - sport vehicle name - reference
+  @param rProductionYear - production year - reference
+  @param rEngine - vector of engine struct - reference
+  @param rInterior - vector of accessories for interior - reference
+  @param rColor - vector of accessories for color - reference
+  @param rWheels - vector of accessories for wheels - reference
+  @param rAdditionalEquipment - vector of accessories for additional equipment - reference
+*/
 SportVehicle::SportVehicle(std::string &rName,
 						   int &rProductionYear,
 						   int &rVehicleLength,
@@ -31,18 +44,36 @@ SportVehicle::~SportVehicle() {
 
 }
 
+/*
+  @brief return vector of engine properties
+*/
 std::vector<engineProperties> SportVehicle::getEnginePackage() const {
   return aEnginePackage;
 }
 
+/*
+  @brief set vector of engine properties
+  @param rEnginePackageVector - vector of engine properties to be set - reference
+*/
 void SportVehicle::setEnginePackage(const std::vector<engineProperties> &rEnginePackageVector) {
   this->aEnginePackage = rEnginePackageVector;
 }
 
+/*
+  @brief set vector of engine properties
+  @param rEnginePackageStruct - engine package struct to be pushed back - reference
+*/
 void SportVehicle::setEnginePackage(const engineProperties &rEnginePackageStruct) {
   this->aEnginePackage.push_back(rEnginePackageStruct);
 }
 
+/*
+  @brief creates an engine struct from given parameters and push it back
+  @param rHp - amount of horsepower - reference
+  @param rNm - amount of Newton meters - reference
+  @param rFuelType - type of fuel - reference
+  @param rEnginePrice - engine price - reference
+*/
 void SportVehicle::addEnginePackage(const int &rHp,
 									const int &rNm,
 									const std::string &rFuelType,
@@ -52,6 +83,13 @@ void SportVehicle::addEnginePackage(const int &rHp,
   setEnginePackage(temp);
 }
 
+/*
+  @brief deletes an engine struct with given parameters form vector
+  @param rHp - amount of horsepower - reference
+  @param rNm - amount of Newton meters - reference
+  @param rFuelType - type of fuel - reference
+  @param rEnginePrice - engine price - reference
+*/
 void SportVehicle::removeEnginePackage(const int &rHp,
 									   const int &rNm,
 									   const std::string &rFuelType,
@@ -70,6 +108,13 @@ void SportVehicle::removeEnginePackage(const int &rHp,
   setEnginePackage(temp);
 }
 
+/*
+  @brief change a engine struct parameters
+  @param rHp - amount of horsepower - reference
+  @param rNm - amount of Newton meters - reference
+  @param rFuelType - type of fuel - reference
+  @param rEnginePrice - engine price - reference
+*/
 void SportVehicle::changeEnginePackageProperties(const int &rHp,
 												 const int &rNm,
 												 const std::string &rFuelType,
@@ -91,6 +136,10 @@ void SportVehicle::changeEnginePackageProperties(const int &rHp,
   setEnginePackage(temp);
 }
 
+/*
+  @brief upgrade engine based on the engine package
+  @param position - position in engine package vector
+*/
 void SportVehicle::upgradeEngine(int position) {
   std::vector<engineProperties> temp = getEngine();
   engineProperties tempEnginePackage = getEnginePackage().at(position);

@@ -9,7 +9,7 @@ public:
     Account();
     Account(unsigned int amount);
     ~Account();
-    bool getAllRight();
+    bool* getAllRight();
     bool getRightOnPosition(unsigned int position);
     void setRightOnPosition(unsigned int position, bool value);
     void setAdmin();
@@ -21,7 +21,7 @@ public:
     Account(Account &obj);
 
 private:
-    unsigned int aRightsNumber = 0;
+    unsigned int aRightsNumber;
     bool *apRights;
     std::string aUsername;
     std::string aPassword;

@@ -1,5 +1,8 @@
 #include "Limousine.h"
 
+/*
+  @brief constructor - create Limousine with default value
+*/
 Limousine::Limousine() {
   aName = "not set";
   aType = "limousine";
@@ -8,6 +11,16 @@ Limousine::Limousine() {
 
 }
 
+/*
+  @brief constructor - create Limousine with given values
+  @param rName - limousine name - reference
+  @param rProductionYear - production year - reference
+  @param rEngine - vector of engine struct - reference
+  @param rInterior - vector of accessories for interior - reference
+  @param rColor - vector of accessories for color - reference
+  @param rWheels - vector of accessories for wheels - reference
+  @param rAdditionalEquipment - vector of accessories for additional equipment - reference
+*/
 Limousine::Limousine(std::string &rName,
 					 int &rProductionYear,
 					 int &rVehicleLength,
@@ -30,12 +43,19 @@ Limousine::Limousine(std::string &rName,
 
 Limousine::~Limousine() {}
 
+/*
+  @brief set type long limousine
+*/
 void Limousine::addLongVersion() {
   aIsLong = true;
   setType("long limousine");
   addVehicleLength(20);
 }
 
+/*
+  @brief virtual function for saving to file
+  @param fileName - name of the file where you want to save
+*/
 void Limousine::saveToFile(const std::string fileName) const {
   std::ofstream output(fileName, std::ios::app);
   output << aType << "," << aName << "," << aProductionYear << "," << aVehicleLength << "\n";
@@ -74,6 +94,9 @@ void Limousine::saveToFile(const std::string fileName) const {
   output.close();
 }
 
+/*
+  @brief function that creates information about limousine and saves that to string
+*/
 std::string Limousine::showInformation() const{
   std::string information;
   information = "Name: " + getName() + "\n";

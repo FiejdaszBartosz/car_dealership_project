@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
   MainWindow newMainWindow;
   LogIn newLogInWindow;
+
   bool checkStart = false;
   if(argc == 2){
       if(!strcmp(argv[1], "admin")) {
